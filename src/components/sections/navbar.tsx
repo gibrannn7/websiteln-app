@@ -82,66 +82,68 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <header
-      ref={headerRef}
-      className="fixed top-0 left-0 right-0 z-50 w-full border-b transition-colors duration-300"
-    >
-      <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-        {/* Logo Image */}
-        <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.png"
-            alt="websiteln logo"
-            width={180}
-            height={48}
-            className="h-12 w-auto object-contain cursor-pointer"
-            priority
-          />
-        </Link>
+    <>
+      <header
+        ref={headerRef}
+        className="fixed top-0 left-0 right-0 z-50 w-full border-b transition-colors duration-300"
+      >
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          {/* Logo Image */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="websiteln logo"
+              width={180}
+              height={48}
+              className="h-12 w-auto object-contain cursor-pointer"
+              priority
+            />
+          </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={(e) => handleScrollTo(e, link.href)}
-              className="text-sm font-light tracking-wide text-zinc-400 hover:text-gold-light transition-colors duration-200"
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                onClick={(e) => handleScrollTo(e, link.href)}
+                className="text-sm font-light tracking-wide text-zinc-400 hover:text-gold-light transition-colors duration-200"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Desktop CTA: Hubungi Kami */}
+          <div className="hidden md:block">
+            <Button
+              onClick={() => {
+                const target = document.querySelector("#contact");
+                if (target) {
+                  const offset = 80;
+                  const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                  window.scrollTo({ top: pos, behavior: "smooth" });
+                }
+              }}
+              variant="default"
+              className="font-semibold tracking-wider uppercase py-2 px-5 rounded-sm text-xs cursor-pointer"
             >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+              Hubungi Kami
+            </Button>
+          </div>
 
-        {/* Desktop CTA: Hubungi Kami */}
-        <div className="hidden md:block">
-          <Button
-            onClick={() => {
-              const target = document.querySelector("#contact");
-              if (target) {
-                const offset = 80;
-                const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                window.scrollTo({ top: pos, behavior: "smooth" });
-              }
-            }}
-            variant="default"
-            className="font-semibold tracking-wider uppercase py-2 px-5 rounded-sm text-xs cursor-pointer"
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
+            aria-label="Toggle Menu"
           >
-            Hubungi Kami
-          </Button>
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+      </header>
 
-        {/* Mobile Toggle */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden p-2 text-zinc-400 hover:text-zinc-100 transition-colors"
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Drawer - Rendered outside <header> to prevent backdrop-filter height clipping */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -151,16 +153,16 @@ export const Navbar: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 z-40 bg-zinc-950/70 backdrop-blur-md md:hidden"
+              className="fixed inset-0 z-[60] bg-zinc-950/80 backdrop-blur-md md:hidden"
             />
 
-            {/* Slide-out Panel - Full height luxury glassmorphic drawer */}
+            {/* Slide-out Panel - Full height luxury drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 bottom-0 w-4/5 max-w-sm z-50 bg-gradient-to-b from-zinc-950 via-zinc-950/98 to-zinc-950 border-l border-gold-dark/20 p-8 flex flex-col justify-between md:hidden shadow-2xl shadow-gold-dark/5"
+              className="fixed right-0 top-0 bottom-0 w-4/5 max-w-sm z-[70] bg-zinc-950 border-l border-gold-dark/20 p-8 flex flex-col justify-between md:hidden shadow-2xl shadow-gold-dark/10"
             >
               <div>
                 {/* Mobile Drawer Header: Logo and Close Button */}
@@ -218,6 +220,6 @@ export const Navbar: React.FC = () => {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 };
