@@ -145,37 +145,59 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
+            {/* Backdrop - Full screen dim background with luxury blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 top-20 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-zinc-950/70 backdrop-blur-md md:hidden"
             />
 
-            {/* Slide-out Panel */}
+            {/* Slide-out Panel - Full height luxury glassmorphic drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-20 bottom-0 w-4/5 max-w-sm z-50 bg-zinc-950/95 border-l border-zinc-900/80 p-8 flex flex-col justify-between md:hidden"
+              className="fixed right-0 top-0 bottom-0 w-4/5 max-w-sm z-50 bg-gradient-to-b from-zinc-950 via-zinc-950/98 to-zinc-950 border-l border-gold-dark/20 p-8 flex flex-col justify-between md:hidden shadow-2xl shadow-gold-dark/5"
             >
-              <div className="flex flex-col space-y-6">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    onClick={(e) => handleScrollTo(e, link.href)}
-                    className="text-lg font-light tracking-wide text-zinc-300 hover:text-gold-light transition-colors duration-200 border-b border-zinc-900 pb-3"
+              <div>
+                {/* Mobile Drawer Header: Logo and Close Button */}
+                <div className="flex items-center justify-between pb-6 border-b border-zinc-900/60 mb-8">
+                  <Image
+                    src="/logo.png"
+                    alt="websiteln logo"
+                    width={130}
+                    height={35}
+                    className="h-8 w-auto object-contain"
+                  />
+                  <button
+                    onClick={() => setIsOpen(false)}
+                    className="p-2 text-zinc-400 hover:text-zinc-100 transition-colors cursor-pointer"
+                    aria-label="Close Menu"
                   >
-                    {link.label}
-                  </a>
-                ))}
+                    <X className="h-6 w-6" />
+                  </button>
+                </div>
+
+                {/* Navigation Links */}
+                <div className="flex flex-col space-y-5">
+                  {navLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={(e) => handleScrollTo(e, link.href)}
+                      className="text-lg font-light tracking-wide text-zinc-300 hover:text-gold-light transition-colors duration-200 border-b border-zinc-900/40 pb-3"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               </div>
 
-              <div className="mt-auto">
+              {/* Bottom CTA Button */}
+              <div className="mt-auto pt-6 border-t border-zinc-900/60">
                 <Button
                   onClick={() => {
                     setIsOpen(false);
