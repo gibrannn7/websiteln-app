@@ -15,7 +15,12 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { portfolioData, PortfolioItem } from "@/data/portfolio-items";
-
+export const metadata = {
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 export default function PortfolioPage() {
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [activeMediaTab, setActiveMediaTab] = useState<"gallery" | "video">("gallery");
