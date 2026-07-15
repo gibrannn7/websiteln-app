@@ -18,7 +18,7 @@ import { portfolioData, PortfolioItem } from "@/data/portfolio-items";
 export const metadata = {
   robots: {
     index: false,
-    follow: true,
+    follow: false,
   },
 };
 export default function PortfolioPage() {
