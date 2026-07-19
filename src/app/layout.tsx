@@ -13,19 +13,27 @@ const fontGeistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "WEBSITELN | Premium Digital Solutions & Automation Platform",
+  // 1. JUDUL WEBSITE SUDAH DIGANTI
+  title: "Bangun Website & Sistem Otomatisasi Cerdas untuk Maksimalkan Bisnis Anda",
   description:
     "Jasa pembuatan website premium, otomatisasi proses bisnis Python enterprise, integrasi kecerdasan buatan (RAG/Chatbot), serta langganan pemeliharaan elit bulanan.",
   keywords: ["WEBSITELN", "bikin website Serang", "otomatisasi bisnis", "aplikasi custom", "ai chatbot", "digitalisasi bisnis Banten"],
   authors: [{ name: "WEBSITELN" }],
   
-  // MASUKKAN KODE STRING DARI GOOGLE DI SINI
+  // 2. KODE VERIFIKASI GOOGLE ANDA
   verification: {
     google: "MASUKKAN_KODE_DARI_GOOGLE_DI_SINI", 
   },
+  
+  // 3. ICON HEADER SUDAH DIGANTI MENGGUNAKAN LOGO.PNG
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 
   openGraph: {
-    title: "WEBSITELN | Premium Digital Solutions & Automation Platform",
+    title: "Bangun Website & Sistem Otomatisasi Cerdas untuk Maksimalkan Bisnis Anda",
     description:
       "Jasa pembuatan website premium, otomatisasi proses bisnis Python enterprise, integrasi kecerdasan buatan (RAG/Chatbot), serta langganan pemeliharaan elit bulanan.",
     url: "https://www.websiteln.com",
@@ -55,8 +63,8 @@ const jsonLd = {
   "offers": {
     "@type": "AggregateOffer",
     "priceCurrency": "IDR",
-    "lowPrice": "2500000",
-    "highPrice": "22500000",
+    "lowPrice": "450000",
+    "highPrice": "950000",
   },
 };
 

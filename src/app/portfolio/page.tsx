@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play, Image as ImageIcon, Maximize2 } from "lucide-react";
+import { Play, Image as ImageIcon, Maximize2, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { WhatsAppBubble } from "@/components/whatsapp-bubble";
@@ -15,17 +15,21 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { portfolioData, PortfolioItem } from "@/data/portfolio-items";
+
 export const metadata = {
   robots: {
     index: false,
     follow: false,
   },
 };
+
 export default function PortfolioPage() {
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [activeMediaTab, setActiveMediaTab] = useState<"gallery" | "video">("gallery");
   const [sliderIndex, setSliderIndex] = useState<number>(0);
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  
+  // State untuk mengontrol Fullscreen
+  const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
 
   const openDetails = (item: PortfolioItem) => {
     setSelectedItem(item);
@@ -228,12 +232,12 @@ export default function PortfolioPage() {
                         fill
                         sizes="(max-width: 768px) 100vw, 30vw"
                         className="object-cover cursor-zoom-in"
-                        onClick={() => setLightboxImage(selectedItem.mediaGallery[sliderIndex])}
+                        onClick={() => setIsLightboxOpen(true)}
                         loading="lazy"
                       />
                        {/* Zoom Indicator Icon overlay */}
                        <div 
-                         onClick={() => setLightboxImage(selectedItem.mediaGallery[sliderIndex])}
+                         onClick={() => setIsLightboxOpen(true)}
                          className="absolute inset-0 bg-black/50 opacity-0 group-hover/media:opacity-100 flex flex-col items-center justify-center text-zinc-150 transition-opacity duration-300 cursor-zoom-in"
                          title="Perbesar Gambar"
                        >
@@ -271,28 +275,70 @@ export default function PortfolioPage() {
         )}
       </Dialog>
 
-      {/* Full-Screen Lightbox Image Preview overlay */}
-      {lightboxImage && (
+      {/* Full-Screen Lightbox Image Preview overlay (Perbaikan Panah & Close Mobile) */}
+      {isLightboxOpen && selectedItem && (
         <div
-          className="fixed inset-0 z-[100] bg-black/95 flex flex-col items-center justify-center cursor-zoom-out p-6"
-          onClick={() => setLightboxImage(null)}
+          className="fixed inset-0 z-[999999] bg-black/98 backdrop-blur-sm flex items-center justify-center touch-none"
         >
-          <div className="relative w-full h-full max-w-7xl max-h-[85vh]">
+          {/* Tombol Tutup Besar & Sangat Responsif */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsLightboxOpen(false);
+            }}
+            className="absolute top-4 right-4 md:top-8 md:right-8 z-[1000000] p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-colors cursor-pointer"
+            title="Tutup Layar Penuh"
+          >
+            <X className="h-7 w-7 text-gold-light hover:text-white" />
+          </button>
+
+          {/* Panah Kiri (Muncul Jika Gambar Lebih dari 1) */}
+          {selectedItem.mediaGallery.length > 1 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePrevSlide(selectedItem.mediaGallery.length);
+              }}
+              className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-[1000000] p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-colors cursor-pointer"
+            >
+              <ChevronLeft className="h-7 w-7 md:h-10 md:w-10 text-gold-light hover:text-white" />
+            </button>
+          )}
+
+          {/* Area Gambar (Klik dimana saja untuk tutup juga bisa) */}
+          <div 
+            className="relative w-full h-full max-w-7xl max-h-[85vh] flex items-center justify-center p-4 cursor-zoom-out"
+            onClick={() => setIsLightboxOpen(false)}
+          >
             <Image
-              src={lightboxImage}
+              src={selectedItem.mediaGallery[sliderIndex]}
               alt="Fullscreen preview"
               fill
-              sizes="90vw"
+              sizes="100vw"
               className="object-contain select-none"
               priority
             />
           </div>
-          <button
-            onClick={() => setLightboxImage(null)}
-            className="absolute top-6 right-6 bg-zinc-900 border border-zinc-850 text-gold-light hover:text-zinc-50 text-xs py-2.5 px-5 rounded-sm font-semibold tracking-wider uppercase transition-colors focus:outline-none cursor-pointer"
-          >
-            Tutup Preview
-          </button>
+
+          {/* Panah Kanan */}
+          {selectedItem.mediaGallery.length > 1 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                handleNextSlide(selectedItem.mediaGallery.length);
+              }}
+              className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-[1000000] p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-colors cursor-pointer"
+            >
+              <ChevronRight className="h-7 w-7 md:h-10 md:w-10 text-gold-light hover:text-white" />
+            </button>
+          )}
+
+          {/* Indikator Nomor Gambar di Bawah */}
+          {selectedItem.mediaGallery.length > 1 && (
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900/80 px-5 py-2.5 rounded-full text-gold-light text-xs font-semibold tracking-widest z-[1000000]">
+              GAMBAR {sliderIndex + 1} / {selectedItem.mediaGallery.length}
+            </div>
+          )}
         </div>
       )}
     </>

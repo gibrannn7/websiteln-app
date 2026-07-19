@@ -27,81 +27,83 @@ export const Pricing: React.FC = () => {
 
   const packages: PricingPackage[] = [
     {
-      name: "Pendampingan & Maintenance",
-      focus: "Dukungan IT Bulanan",
-      price: "Rp 750.000",
-      period: "Per Bulan",
+      name: "Paket Starter",
+      focus: "Situs Profil Sederhana",
+      price: "Rp 450.000",
+      period: "Satu Kali",
       features: [
-        "Pemeliharaan server & hosting",
-        "Pembaruan keamanan & pencegahan virus",
-        "Pencadangan (backup) data rutin",
-        "Perbaikan bug & error dengan cepat",
-        "Bantuan update konten berkala",
-        "Laporan performa sistem bulanan",
-        "Konsultasi teknis prioritas via WhatsApp",
-      ],
-      waMessage:
-        "Halo WEBSITELN, saya tertarik berlangganan Paket Pendampingan & Maintenance untuk merawat sistem saya.",
-      detailedSpecs:
-        "Anda yang pegang bisnisnya, biar kami yang jaga teknisnya. Paket ini memastikan website atau sistem Anda tetap aman, rutin dicadangkan (backup), bebas error, dan siap diperbarui kapan saja. Anda menghemat banyak biaya karena tidak perlu menggaji tim IT internal khusus bulanan.",
-    },
-    {
-      name: "Solusi Ringan (Web Profil)",
-      focus: "Situs Profil & Landing Page",
-      price: "Rp 1.500.000",
-      period: "Mulai Dari / Satu Kali",
-      features: [
-        "Tampilan modern & elegan",
+        "Desain modern 1 Halaman (One Page)",
         "Responsif di HP & Desktop",
+        "Loading cepat & ringan",
         "Integrasi tombol chat WhatsApp",
+        "Gratis revisi minor tampilan 1x",
         "Optimasi pencarian Google (SEO Dasar)",
-        "Gratis domain & hosting tahun pertama",
-        "Revisi minor tampilan 2 kali",
         "Panduan cara edit konten mandiri",
       ],
       waMessage:
-        "Halo WEBSITELN, saya tertarik dengan Paket Solusi Ringan untuk membuat website bisnis saya.",
+        "Halo WEBSITELN, saya tertarik dengan Paket Starter untuk membuat website profil sederhana.",
       detailedSpecs:
-        "Untuk Anda yang baru memulai dan ingin bisnisnya punya kredibilitas tinggi di internet. Fokus pada tampilan yang elegan, cepat dibuka, dan langsung terhubung ke kontak bisnis Anda tanpa proses yang rumit. Cocok untuk UMKM, profil perusahaan, atau katalog produk online.",
+        "Paket terjangkau untuk Anda yang baru memulai dan ingin bisnisnya punya kredibilitas di internet. Fokus pada tampilan 1 halaman (one-page) yang elegan, cepat dibuka, dan langsung terhubung ke kontak bisnis Anda tanpa proses rumit. Cocok untuk landing page, personal branding, atau katalog ringkas.",
     },
     {
-      name: "Otomasi & Sistem Operasional",
-      focus: "Sistem Internal & Workflow",
-      price: "Rp 4.500.000",
-      period: "Mulai Dari / Satu Kali",
-      features: [
-        "Dashboard admin yang interaktif",
-        "Pembuatan database kustom yang aman",
-        "Otomatisasi alur kerja (Workflow)",
-        "Integrasi notifikasi pesan otomatis",
-        "Manajemen hak akses pengguna/staf",
-        "Laporan & ekspor data (Excel/CSV)",
-        "Sesi pelatihan penggunaan sistem",
-      ],
-      waMessage:
-        "Halo WEBSITELN, saya ingin berkonsultasi mengenai Paket Otomasi & Sistem Operasional untuk efisiensi bisnis saya.",
-      detailedSpecs:
-        "Sistem kustom yang dirancang khusus untuk memotong jalur kerja manual yang bikin lelah. Sudah termasuk pembuatan dashboard admin, pengolahan database aman, hingga otomatisasi alur data sesuai kebutuhan tim Anda. Sangat cocok untuk sistem kasir, manajemen stok, absensi, atau bot layanan pelanggan.",
-    },
-    {
-      name: "Platform Skala Besar",
-      focus: "Aplikasi Mobile & Enterprise",
-      price: "Rp 12.000.000",
-      period: "Mulai Dari / Satu Kali",
+      name: "Paket Mahasiswa (KKM)",
+      focus: "Web Desa, UMKM & Proker",
+      price: "Rp 650.000",
+      period: "Satu Kali",
       isPopular: true,
       features: [
-        "Pembuatan Aplikasi Android / iOS",
-        "Arsitektur server untuk traffic besar",
-        "Integrasi Kecerdasan Buatan (AI)",
-        "Modernisasi / perbaikan sistem lama",
-        "Keamanan data tingkat lanjut",
-        "Pengujian kualitas & sistem (QA Testing)",
-        "Bantuan rilis ke PlayStore / AppStore",
+        "Desain modern dan interaktif",
+        "Responsive di HP, tablet, dan laptop",
+        "SEO friendly supaya lebih mudah ditemukan",
+        "Loading cepat dan ringan",
+        "Integrasi WhatsApp/Telegram",
+        "Form pendataan atau pendaftaran online",
+        "Galeri kegiatan dan dokumentasi",
+        "Halaman profil desa, kelompok / UMKM",
+        "Publish siap akses di browser",
+        "Setelah selesai tetap bisa dikelola sendiri"
       ],
       waMessage:
-        "Halo WEBSITELN, saya butuh solusi untuk proyek skala besar dengan Paket Platform Skala Besar.",
+        "Halo WEBSITELN, saya tertarik dengan Paket Mahasiswa KKM untuk keperluan proker/desa/UMKM.",
       detailedSpecs:
-        "Solusi menyeluruh untuk kebutuhan teknologi yang kompleks. Kami bangun arsitektur sistem dari nol—baik aplikasi seluler maupun platform berbasis kecerdasan buatan—yang siap menampung traffic besar dan data yang rumit. Dikerjakan oleh tim ahli untuk menjamin performa dan keamanan jangka panjang.",
+        "Paket khusus mahasiswa atau kelompok untuk keperluan Proker KKM/KKN. Bisa disesuaikan penuh untuk website desa, UMKM, profil kelompok, maupun program kerja lainnya. Sudah dilengkapi dengan fitur pendataan warga/peserta dan galeri dokumentasi kegiatan yang lengkap.",
+    },
+    {
+      name: "Lite Fix & Feature",
+      focus: "Perbaikan & Fitur Mikro",
+      price: "Rp 750.000",
+      period: "Per Request",
+      features: [
+        "Perbaikan bug & error dengan cepat",
+        "Pembuatan 1-2 fitur baru skala kecil",
+        "Penyesuaian tampilan & layout (minor)",
+        "Optimasi kecepatan kode ringan",
+        "Konsultasi & peninjauan kode langsung",
+        "Garansi kode berjalan lancar",
+      ],
+      waMessage:
+        "Halo WEBSITELN, saya butuh perbaikan atau penambahan fitur sistem dengan Paket Lite Fix.",
+      detailedSpecs:
+        "Solusi cepat bagi Anda yang sudah memiliki website/sistem namun mengalami kendala (error/bug) mendesak, atau butuh menambahkan 1 hingga 2 fitur skala kecil baru. Pengerjaan akan dieksekusi dengan cepat, rapi, dan bergaransi.",
+    },
+    {
+      name: "Pro Business",
+      focus: "Situs Perusahaan Premium",
+      price: "Rp 950.000",
+      period: "Satu Kali",
+      features: [
+        "Desain Premium (Multi-halaman)",
+        "Animasi & Efek Interaktif",
+        "Optimasi SEO Tingkat Lanjut",
+        "Dashboard Admin Sederhana",
+        "Integrasi Social Media & Maps",
+        "Keamanan SSL Tingkat Lanjut",
+        "Dukungan Teknis 1 Bulan penuh",
+      ],
+      waMessage:
+        "Halo WEBSITELN, saya butuh website perusahaan profesional dengan Paket Pro Business.",
+      detailedSpecs:
+        "Website company profile profesional untuk perusahaan, agensi, dan bisnis yang sedang berkembang. Sudah dilengkapi dengan berbagai halaman terpisah (Tentang Kami, Layanan, Kontak, Portofolio) serta dashboard sederhana untuk manajemen konten. Menjamin performa dan keamanan jangka panjang.",
     }
   ];
 

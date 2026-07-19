@@ -77,7 +77,8 @@ Pilihan Layanan: ${serviceType}
 Deskripsi Kebutuhan Projek:
 ${projectDescription}`;
 
-      const mailtoUrl = `mailto:hello@websiteln.com?subject=${encodeURIComponent(
+      // EMAIL SUDAH DIGANTI MENJADI admin@websiteln.com
+      const mailtoUrl = `mailto:admin@websiteln.com?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`;
 
@@ -192,17 +193,18 @@ ${projectDescription}`;
                   <SelectValue placeholder="Pilih Paket Layanan" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Solusi Ringan (Web Profil)">
-                    Solusi Ringan (Web Profil / Landing Page)
+                  {/* PILIHAN PAKET SUDAH DISESUAIKAN DENGAN YANG BARU */}
+                  <SelectItem value="Starter Web">
+                    Starter Web (Landing Page Dasar)
                   </SelectItem>
-                  <SelectItem value="Otomasi & Sistem Operasional">
-                    Otomasi & Sistem Operasional (Kustom)
+                  <SelectItem value="Paket KKM (Mahasiswa)">
+                    Paket KKM (Web Desa / Proker Mahasiswa)
                   </SelectItem>
-                  <SelectItem value="Platform Skala Besar">
-                    Platform Skala Besar (Aplikasi & AI)
+                  <SelectItem value="Lite Fix & Feature">
+                    Lite Fix & Feature (Perbaikan / Fitur Mikro)
                   </SelectItem>
-                  <SelectItem value="Pendampingan & Maintenance">
-                    Pendampingan & Maintenance (Bulanan)
+                  <SelectItem value="Pro Business">
+                    Pro Business (Company Profile Profesional)
                   </SelectItem>
                 </SelectContent>
               </Select>
