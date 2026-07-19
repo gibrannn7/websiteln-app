@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Play, Image as ImageIcon, Maximize2, ChevronLeft, ChevronRight, X } from "lucide-react";
+
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { WhatsAppBubble } from "@/components/whatsapp-bubble";
@@ -14,21 +15,13 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { portfolioData, PortfolioItem } from "@/data/portfolio-items";
 
-export const metadata = {
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+import { portfolioData, PortfolioItem } from "@/data/portfolio-items";
 
 export default function PortfolioPage() {
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [activeMediaTab, setActiveMediaTab] = useState<"gallery" | "video">("gallery");
   const [sliderIndex, setSliderIndex] = useState<number>(0);
-  
-  // State untuk mengontrol Fullscreen
   const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
 
   const openDetails = (item: PortfolioItem) => {
@@ -52,6 +45,7 @@ export default function PortfolioPage() {
   return (
     <>
       <Navbar />
+
       <main className="flex-1 bg-zinc-950 pt-32 pb-20 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
@@ -113,22 +107,31 @@ export default function PortfolioPage() {
 
           {/* Back to Home link */}
           <div className="flex justify-center mt-16">
-            <Link 
-              href="/" 
-              className="text-xs font-semibold text-gold-light hover:text-gold-dark tracking-wider uppercase transition-colors"
+            <Link
+               href="/"
+               className="text-xs font-semibold text-gold-light hover:text-gold-dark tracking-wider uppercase transition-colors"
             >
               &larr; Kembali ke Beranda
             </Link>
           </div>
         </div>
       </main>
+
       <Footer />
       <WhatsAppBubble />
 
-      {/* Modal Dialog Detail - Luxury Asymmetric max-w-5xl */}
+      {/* Modal Dialog Detail */}
       <Dialog open={selectedItem !== null} onOpenChange={(open) => !open && closeDetails()}>
         {selectedItem && (
-          <DialogContent className="max-w-[95vw] md:max-w-[85vw] lg:max-w-5xl bg-zinc-950 border border-zinc-850 p-8 rounded-sm shadow-2xl overflow-y-auto max-h-[92vh]">
+          <DialogContent 
+            className="max-w-[95vw] md:max-w-[85vw] lg:max-w-5xl bg-zinc-950 border border-zinc-850 p-8 rounded-sm shadow-2xl overflow-y-auto max-h-[92vh]"
+            onInteractOutside={(e) => {
+              // Mencegah Modal Utama tertutup otomatis saat ngeklik area Lightbox
+              if (isLightboxOpen) {
+                e.preventDefault();
+              }
+            }}
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
               {/* Left Column */}
               <div className="lg:col-span-7 flex flex-col justify-between pr-0 lg:pr-4">
@@ -141,11 +144,9 @@ export default function PortfolioPage() {
                       {selectedItem.title}
                     </DialogTitle>
                   </DialogHeader>
-
                   <DialogDescription className="text-zinc-400 text-sm leading-relaxed font-light mb-8">
                     {selectedItem.detailedDescription}
                   </DialogDescription>
-
                   <div className="mb-6">
                     <span className="text-[11px] text-zinc-500 uppercase tracking-widest block mb-4 font-semibold">
                       Spesifikasi Tumpukan Teknologi
@@ -162,22 +163,12 @@ export default function PortfolioPage() {
                     </div>
                   </div>
                 </div>
-
                 <div className="border-t border-zinc-900 pt-6 mt-8 flex flex-wrap gap-4 items-center justify-between">
                   <span className="text-[11px] text-zinc-650 tracking-wider uppercase">
                     ID Referensi: {selectedItem.id}
                   </span>
                   <a
-                    href="#contact"
-                    onClick={() => {
-                      closeDetails();
-                      const target = document.querySelector("#contact");
-                      if (target) {
-                        const offset = 80;
-                        const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                        window.scrollTo({ top: pos, behavior: "smooth" });
-                      }
-                    }}
+                    href="/#contact"
                     className="text-xs font-semibold text-gold-light hover:text-gold-dark tracking-wider uppercase transition-colors"
                   >
                     Konsultasikan Kebutuhan Sistem &rarr;
@@ -213,7 +204,6 @@ export default function PortfolioPage() {
                     </button>
                   </div>
                 )}
-
                 <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden bg-zinc-950 border border-zinc-850 shadow-2xl shadow-gold-dark/5 group/media">
                   {activeMediaTab === "video" && selectedItem.externalVideoUrl ? (
                     <iframe
@@ -235,10 +225,9 @@ export default function PortfolioPage() {
                         onClick={() => setIsLightboxOpen(true)}
                         loading="lazy"
                       />
-                       {/* Zoom Indicator Icon overlay */}
                        <div 
                          onClick={() => setIsLightboxOpen(true)}
-                         className="absolute inset-0 bg-black/50 opacity-0 group-hover/media:opacity-100 flex flex-col items-center justify-center text-zinc-150 transition-opacity duration-300 cursor-zoom-in"
+                         className="absolute inset-0 bg-black/50 opacity-0 group-hover/media:opacity-100 flex flex-col items-center justify-center text-zinc-150 transition-opacity duration-300 cursor-zoom-in" 
                          title="Perbesar Gambar"
                        >
                          <Maximize2 className="h-7 w-7 text-gold-light mb-2" />
@@ -275,39 +264,13 @@ export default function PortfolioPage() {
         )}
       </Dialog>
 
-      {/* Full-Screen Lightbox Image Preview overlay (Perbaikan Panah & Close Mobile) */}
+      {/* Full-Screen Lightbox Image Preview overlay (Slider Kanan/Kiri Aktif) */}
       {isLightboxOpen && selectedItem && (
-        <div
-          className="fixed inset-0 z-[999999] bg-black/98 backdrop-blur-sm flex items-center justify-center touch-none"
-        >
-          {/* Tombol Tutup Besar & Sangat Responsif */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsLightboxOpen(false);
-            }}
-            className="absolute top-4 right-4 md:top-8 md:right-8 z-[1000000] p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-colors cursor-pointer"
-            title="Tutup Layar Penuh"
-          >
-            <X className="h-7 w-7 text-gold-light hover:text-white" />
-          </button>
-
-          {/* Panah Kiri (Muncul Jika Gambar Lebih dari 1) */}
-          {selectedItem.mediaGallery.length > 1 && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                handlePrevSlide(selectedItem.mediaGallery.length);
-              }}
-              className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-[1000000] p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-colors cursor-pointer"
-            >
-              <ChevronLeft className="h-7 w-7 md:h-10 md:w-10 text-gold-light hover:text-white" />
-            </button>
-          )}
-
-          {/* Area Gambar (Klik dimana saja untuk tutup juga bisa) */}
+        <div className="fixed inset-0 z-[999999] bg-black/98 backdrop-blur-sm flex items-center justify-center">
+          
+          {/* Image Area - Disimpan paling atas di DOM agar posisinya berada di bawah tombol */}
           <div 
-            className="relative w-full h-full max-w-7xl max-h-[85vh] flex items-center justify-center p-4 cursor-zoom-out"
+            className="relative w-full h-full max-w-7xl max-h-[85vh] flex items-center justify-center p-4 cursor-zoom-out z-0"
             onClick={() => setIsLightboxOpen(false)}
           >
             <Image
@@ -320,23 +283,54 @@ export default function PortfolioPage() {
             />
           </div>
 
-          {/* Panah Kanan */}
+          {/* Close Button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsLightboxOpen(false);
+            }}
+            className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-all cursor-pointer pointer-events-auto shadow-2xl"
+            title="Tutup Layar Penuh"
+          >
+            <X className="h-7 w-7 text-gold-light hover:text-white pointer-events-none" />
+          </button>
+
+          {/* Prev Button */}
           {selectedItem.mediaGallery.length > 1 && (
             <button
+              type="button"
               onClick={(e) => {
+                e.preventDefault();
                 e.stopPropagation();
-                handleNextSlide(selectedItem.mediaGallery.length);
+                handlePrevSlide(selectedItem.mediaGallery.length);
               }}
-              className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-[1000000] p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-colors cursor-pointer"
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-all cursor-pointer pointer-events-auto shadow-2xl"
             >
-              <ChevronRight className="h-7 w-7 md:h-10 md:w-10 text-gold-light hover:text-white" />
+              <ChevronLeft className="h-7 w-7 md:h-10 md:w-10 text-gold-light hover:text-white pointer-events-none" />
             </button>
           )}
 
-          {/* Indikator Nomor Gambar di Bawah */}
+          {/* Next Button */}
           {selectedItem.mediaGallery.length > 1 && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900/80 px-5 py-2.5 rounded-full text-gold-light text-xs font-semibold tracking-widest z-[1000000]">
-              GAMBAR {sliderIndex + 1} / {selectedItem.mediaGallery.length}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleNextSlide(selectedItem.mediaGallery.length);
+              }}
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-all cursor-pointer pointer-events-auto shadow-2xl"
+            >
+              <ChevronRight className="h-7 w-7 md:h-10 md:w-10 text-gold-light hover:text-white pointer-events-none" />
+            </button>
+          )}
+
+          {/* Indicator */}
+          {selectedItem.mediaGallery.length > 1 && (
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900/80 px-5 py-2.5 rounded-full text-gold-light text-xs font-semibold tracking-widest z-50 pointer-events-none">
+              {sliderIndex + 1} / {selectedItem.mediaGallery.length}
             </div>
           )}
         </div>

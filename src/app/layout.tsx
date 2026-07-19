@@ -13,25 +13,19 @@ const fontGeistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  // 1. JUDUL WEBSITE SUDAH DIGANTI
-  title: "Bangun Website & Sistem Otomatisasi Cerdas untuk Maksimalkan Bisnis Anda",
+  title: "WEBSITELN | Jasa Pembuatan Website Proker KKM, Company Profile & Automation",
   description:
-    "Jasa pembuatan website premium, otomatisasi proses bisnis Python enterprise, integrasi kecerdasan buatan (RAG/Chatbot), serta langganan pemeliharaan elit bulanan.",
-  keywords: ["WEBSITELN", "bikin website Serang", "otomatisasi bisnis", "aplikasi custom", "ai chatbot", "digitalisasi bisnis Banten"],
+    "Spesialis jasa pembuatan website murah untuk Proker KKM/Desa, Company Profile UMKM, hingga otomasi sistem IT. Harga mahasiswa, kualitas enterprise.",
+  keywords: ["Jasa website KKM", "bikin web desa Serang", "website mahasiswa murah", "otomatisasi bisnis", "WEBSITELN", "jasa web Banten", "Automation"],
   authors: [{ name: "WEBSITELN" }],
-  
-  // 2. KODE VERIFIKASI GOOGLE ANDA
   verification: {
-    google: "MASUKKAN_KODE_DARI_GOOGLE_DI_SINI", 
+    google: "7egXVhQuB4VSHyRsC4TREMEWvIHBOnUALfIHRZXD7js",
   },
-  
-  // 3. ICON HEADER SUDAH DIGANTI MENGGUNAKAN LOGO.PNG
   icons: {
     icon: "/logo.png",
     shortcut: "/logo.png",
     apple: "/logo.png",
   },
-
   openGraph: {
     title: "Bangun Website & Sistem Otomatisasi Cerdas untuk Maksimalkan Bisnis Anda",
     description:
@@ -46,25 +40,25 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "WEBSITELN",
-  "image": "https://www.websiteln.com/logo.png",
-  "priceRange": "$$$",
-  "telephone": "+6281774952006",
-  "address": {
+  name: "WEBSITELN",
+  image: "https://www.websiteln.com/logo.png",
+  priceRange: "$$$",
+  telephone: "+6281774952006",
+  address: {
     "@type": "PostalAddress",
-    "streetAddress": "Kota Serang",
-    "addressLocality": "Serang",
-    "addressRegion": "Banten",
-    "addressCountry": "ID",
+    streetAddress: "Kota Serang",
+    addressLocality: "Serang",
+    addressRegion: "Banten",
+    addressCountry: "ID",
   },
-  "areaServed": "Indonesia",
-  "description":
+  areaServed: "Indonesia",
+  description:
     "Layanan rekayasa perangkat lunak instan, modernisasi sistem legacy, otomasi Python & AI, serta pemeliharaan elite bulanan.",
-  "offers": {
+  offers: {
     "@type": "AggregateOffer",
-    "priceCurrency": "IDR",
-    "lowPrice": "450000",
-    "highPrice": "950000",
+    priceCurrency: "IDR",
+    lowPrice: "450000",
+    highPrice: "950000",
   },
 };
 

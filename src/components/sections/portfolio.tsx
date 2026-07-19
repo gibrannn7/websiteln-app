@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Play, Image as ImageIcon, Maximize2 } from "lucide-react";
+import { Play, Image as ImageIcon, Maximize2, ChevronLeft, ChevronRight, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -19,7 +19,7 @@ export const Portfolio: React.FC = () => {
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
   const [activeMediaTab, setActiveMediaTab] = useState<"gallery" | "video">("gallery");
   const [sliderIndex, setSliderIndex] = useState<number>(0);
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [isLightboxOpen, setIsLightboxOpen] = useState<boolean>(false);
 
   const openDetails = (item: PortfolioItem) => {
     setSelectedItem(item);
@@ -44,11 +44,8 @@ export const Portfolio: React.FC = () => {
   return (
     <>
       <section id="portfolio" className="bg-zinc-950 py-32 px-6 relative z-10">
-        {/* Top seamless transition gradient divider */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-gold-dark/20 to-transparent" />
-
         <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
           <div className="flex flex-col items-center text-center mb-24">
             <span className="text-xs text-gold-light tracking-[0.2em] uppercase font-semibold mb-4">
               PROJEK PILIHAN
@@ -59,7 +56,6 @@ export const Portfolio: React.FC = () => {
             <div className="h-[2px] w-16 bg-gold-dark/40 mt-8" />
           </div>
 
-          {/* 3-column Grid (cards are larger and premium) */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
             {landingProjects.map((item, idx) => (
               <div
@@ -67,7 +63,6 @@ export const Portfolio: React.FC = () => {
                 onClick={() => openDetails(item)}
                 className="group cursor-pointer border border-zinc-900 bg-zinc-900/10 hover:border-gold-dark/40 hover:bg-zinc-900/20 rounded-sm overflow-hidden transition-all duration-300 flex flex-col justify-between"
               >
-                {/* Thumbnail Container */}
                 <div className="relative w-full aspect-[4/3] overflow-hidden bg-zinc-950">
                   <Image
                     src={item.thumbnailUrl}
@@ -79,8 +74,6 @@ export const Portfolio: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/10 transition-colors duration-300" />
                 </div>
-
-                {/* Title & Short Description */}
                 <div className="p-7 md:p-8 flex-1 flex flex-col justify-between">
                   <div>
                     <div className="flex flex-wrap gap-2 mb-4">
@@ -105,7 +98,6 @@ export const Portfolio: React.FC = () => {
             ))}
           </div>
 
-          {/* View All Projects Button */}
           {portfolioData.length > 3 && (
             <div className="flex justify-center mt-16">
               <Link
@@ -122,12 +114,19 @@ export const Portfolio: React.FC = () => {
         </div>
       </section>
 
-      {/* Pop-up (Preview) Dikeluarkan dari Section agar Bebas Muncul Paling Depan */}
+      {/* Modal Dialog Detail */}
       <Dialog open={selectedItem !== null} onOpenChange={(open) => !open && closeDetails()}>
         {selectedItem && (
-          <DialogContent className="max-w-[95vw] md:max-w-[85vw] lg:max-w-5xl bg-zinc-950 border border-zinc-850 p-8 rounded-sm shadow-2xl overflow-y-auto max-h-[92vh]">
+          <DialogContent 
+            className="max-w-[95vw] md:max-w-[85vw] lg:max-w-5xl bg-zinc-950 border border-zinc-850 p-8 rounded-sm shadow-2xl overflow-y-auto max-h-[92vh]"
+            onInteractOutside={(e) => {
+              // Mencegah Modal Utama tertutup otomatis saat ngeklik area Lightbox
+              if (isLightboxOpen) {
+                e.preventDefault();
+              }
+            }}
+          >
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-              {/* Left Column - Detailed Info (55% width) */}
               <div className="lg:col-span-7 flex flex-col justify-between pr-0 lg:pr-4">
                 <div>
                   <DialogHeader className="mb-6">
@@ -138,12 +137,9 @@ export const Portfolio: React.FC = () => {
                       {selectedItem.title}
                     </DialogTitle>
                   </DialogHeader>
-
                   <DialogDescription className="text-zinc-400 text-sm leading-relaxed font-light mb-8">
                     {selectedItem.detailedDescription}
                   </DialogDescription>
-
-                  {/* Tech Stack section */}
                   <div className="mb-6">
                     <span className="text-[11px] text-zinc-500 uppercase tracking-widest block mb-4 font-semibold">
                       Spesifikasi Tumpukan Teknologi
@@ -160,7 +156,6 @@ export const Portfolio: React.FC = () => {
                     </div>
                   </div>
                 </div>
-
                 <div className="border-t border-zinc-900 pt-6 mt-8 flex flex-wrap gap-4 items-center justify-between">
                   <span className="text-[11px] text-zinc-650 tracking-wider uppercase">
                     ID Referensi: {selectedItem.id}
@@ -183,9 +178,7 @@ export const Portfolio: React.FC = () => {
                 </div>
               </div>
 
-              {/* Right Column - Media Showcase (45% width) */}
               <div className="lg:col-span-5 flex flex-col justify-center">
-                {/* Media Switcher Tabs if Video exists */}
                 {selectedItem.externalVideoUrl && (
                   <div className="flex bg-zinc-900 border border-zinc-850 p-1 rounded-sm mb-4">
                     <button
@@ -212,8 +205,6 @@ export const Portfolio: React.FC = () => {
                     </button>
                   </div>
                 )}
-
-                {/* Media Content Display */}
                 <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden bg-zinc-950 border border-zinc-850 shadow-2xl shadow-gold-dark/5 group/media">
                   {activeMediaTab === "video" && selectedItem.externalVideoUrl ? (
                     <iframe
@@ -232,13 +223,12 @@ export const Portfolio: React.FC = () => {
                         fill
                         sizes="(max-width: 768px) 100vw, 30vw"
                         className="object-cover cursor-zoom-in"
-                        onClick={() => setLightboxImage(selectedItem.mediaGallery[sliderIndex])}
+                        onClick={() => setIsLightboxOpen(true)}
                         loading="lazy"
                       />
-                       {/* Zoom Indicator Icon overlay */}
                        <div 
-                         onClick={() => setLightboxImage(selectedItem.mediaGallery[sliderIndex])}
-                         className="absolute inset-0 bg-black/50 opacity-0 group-hover/media:opacity-100 flex flex-col items-center justify-center text-zinc-150 transition-opacity duration-300 cursor-zoom-in"
+                         onClick={() => setIsLightboxOpen(true)}
+                         className="absolute inset-0 bg-black/50 opacity-0 group-hover/media:opacity-100 flex flex-col items-center justify-center text-zinc-150 transition-opacity duration-300 cursor-zoom-in" 
                          title="Perbesar Gambar"
                        >
                          <Maximize2 className="h-7 w-7 text-gold-light mb-2" />
@@ -275,28 +265,75 @@ export const Portfolio: React.FC = () => {
         )}
       </Dialog>
 
-      {/* Layar Penuh Dikeluarkan dari Section agar Bebas Muncul Paling Depan */}
-      {lightboxImage && (
-        <div
-          className="fixed inset-0 z-[99999] bg-black/95 flex flex-col items-center justify-center cursor-zoom-out p-6"
-          onClick={() => setLightboxImage(null)}
-        >
-          <div className="relative w-full h-full max-w-7xl max-h-[85vh]">
+      {/* Full-Screen Lightbox Image Preview overlay (Slider Kanan/Kiri Aktif) */}
+      {isLightboxOpen && selectedItem && (
+        <div className="fixed inset-0 z-[999999] bg-black/98 backdrop-blur-sm flex items-center justify-center">
+          
+          {/* Image Area - Disimpan paling atas di DOM agar posisinya berada di bawah tombol */}
+          <div 
+            className="relative w-full h-full max-w-7xl max-h-[85vh] flex items-center justify-center p-4 cursor-zoom-out z-0"
+            onClick={() => setIsLightboxOpen(false)}
+          >
             <Image
-              src={lightboxImage}
+              src={selectedItem.mediaGallery[sliderIndex]}
               alt="Fullscreen preview"
               fill
-              sizes="90vw"
+              sizes="100vw"
               className="object-contain select-none"
               priority
             />
           </div>
+
+          {/* Close Button */}
           <button
-            onClick={() => setLightboxImage(null)}
-            className="absolute top-6 right-6 bg-zinc-900 border border-zinc-850 text-gold-light hover:text-zinc-50 text-xs py-2.5 px-5 rounded-sm font-semibold tracking-wider uppercase transition-colors focus:outline-none cursor-pointer"
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              setIsLightboxOpen(false);
+            }}
+            className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-all cursor-pointer pointer-events-auto shadow-2xl"
+            title="Tutup Layar Penuh"
           >
-            Tutup Preview
+            <X className="h-7 w-7 text-gold-light hover:text-white pointer-events-none" />
           </button>
+
+          {/* Prev Button */}
+          {selectedItem.mediaGallery.length > 1 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handlePrevSlide(selectedItem.mediaGallery.length);
+              }}
+              className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-50 p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-all cursor-pointer pointer-events-auto shadow-2xl"
+            >
+              <ChevronLeft className="h-7 w-7 md:h-10 md:w-10 text-gold-light hover:text-white pointer-events-none" />
+            </button>
+          )}
+
+          {/* Next Button */}
+          {selectedItem.mediaGallery.length > 1 && (
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleNextSlide(selectedItem.mediaGallery.length);
+              }}
+              className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-50 p-4 bg-zinc-900/60 hover:bg-zinc-800 rounded-full transition-all cursor-pointer pointer-events-auto shadow-2xl"
+            >
+              <ChevronRight className="h-7 w-7 md:h-10 md:w-10 text-gold-light hover:text-white pointer-events-none" />
+            </button>
+          )}
+
+          {/* Indicator */}
+          {selectedItem.mediaGallery.length > 1 && (
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900/80 px-5 py-2.5 rounded-full text-gold-light text-xs font-semibold tracking-widest z-50 pointer-events-none">
+              {sliderIndex + 1} / {selectedItem.mediaGallery.length}
+            </div>
+          )}
         </div>
       )}
     </>

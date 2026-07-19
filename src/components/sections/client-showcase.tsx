@@ -5,48 +5,19 @@ import LogoLoop, { LogoItem } from "@/components/LogoLoop";
 
 export const ClientShowcase: React.FC = () => {
   const partners: LogoItem[] = [
-    {
-      node: (
-        <span className="font-serif text-sm md:text-base font-bold tracking-[0.25em] text-zinc-500 hover:text-gold-light transition-colors duration-300 uppercase select-none">
-          Vercel Enterprise
-        </span>
-      ),
-    },
-    {
-      node: (
-        <span className="font-sans text-sm md:text-base font-light tracking-[0.3em] text-zinc-500 hover:text-gold-light transition-colors duration-300 uppercase select-none">
-          Supabase Corp
-        </span>
-      ),
-    },
-    {
-      node: (
-        <span className="font-mono text-sm md:text-base font-medium tracking-[0.2em] text-zinc-500 hover:text-gold-light transition-colors duration-300 uppercase select-none">
-          FastAPI Core
-        </span>
-      ),
-    },
-    {
-      node: (
-        <span className="font-sans text-sm md:text-base font-extralight tracking-[0.3em] text-zinc-500 hover:text-gold-light transition-colors duration-300 uppercase select-none">
-          Railway.app
-        </span>
-      ),
-    },
-    {
-      node: (
-        <span className="font-serif text-sm md:text-base italic font-bold tracking-[0.15em] text-zinc-500 hover:text-gold-light transition-colors duration-300 uppercase select-none">
-          Python Enterprise
-        </span>
-      ),
-    },
-    {
-      node: (
-        <span className="font-sans text-sm md:text-base font-semibold tracking-[0.25em] text-zinc-500 hover:text-gold-light transition-colors duration-300 uppercase select-none">
-          Scrapy Distributed
-        </span>
-      ),
-    },
+    { src: "/logo/svg/docker.svg", alt: "Docker" },
+    { src: "/logo/svg/flutter.svg", alt: "Flutter" },
+    { src: "/logo/svg/js.svg", alt: "JavaScript" },
+    { src: "/logo/svg/langchain.svg", alt: "Langchain" },
+    { src: "/logo/svg/langgraph.svg", alt: "Langgraph" },
+    { src: "/logo/svg/laravel.svg", alt: "Laravel" },
+    { src: "/logo/svg/nextjs.svg", alt: "Next.js" },
+    { src: "/logo/svg/opencv.svg", alt: "OpenCV" },
+    { src: "/logo/svg/python.svg", alt: "Python" },
+    { src: "/logo/svg/react.svg", alt: "React" },
+    { src: "/logo/svg/selenium.svg", alt: "Selenium" },
+    { src: "/logo/svg/supabase.svg", alt: "Supabase" },
+    { src: "/logo/svg/unity.svg", alt: "Unity" },
   ];
 
   return (
@@ -70,8 +41,8 @@ export const ClientShowcase: React.FC = () => {
             logos={partners}
             speed={40}
             direction="left"
-            logoHeight={24}
-            gap={64}
+            logoHeight={32}
+            gap={48}
             pauseOnHover={true}
             fadeOut={true}
             fadeOutColor="rgb(9, 9, 11)"

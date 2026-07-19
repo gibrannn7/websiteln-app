@@ -66,25 +66,30 @@ export const ContactForm: React.FC = () => {
 
     setLoading(true);
 
-    // Simulate short network delay to prevent double-click issues and show loading state
-    setTimeout(() => {
-      const subject = `[PROSPEK NEW] Pengajuan Projek Websiteln - ${companyName}`;
-      const body = `Nama Lengkap: ${fullName}
-Email: ${email}
-Perusahaan: ${companyName}
-Pilihan Layanan: ${serviceType}
+    const subject = `[PROSPEK NEW] Pengajuan Projek Websiteln - ${companyName}`;
+    const body = `Nama Lengkap: ${fullName}\nEmail: ${email}\nPerusahaan: ${companyName}\nPilihan Layanan: ${serviceType}\n\nDeskripsi Kebutuhan Projek:\n${projectDescription}`;
 
-Deskripsi Kebutuhan Projek:
-${projectDescription}`;
+    // Eksekusi sisi klien: Deteksi jenis perangkat (Mobile vs Desktop)
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-      // EMAIL SUDAH DIGANTI MENJADI admin@websiteln.com
+    if (isMobile) {
+      // Perangkat Mobile: OS selalu memiliki handler email native, mailto aman digunakan.
       const mailtoUrl = `mailto:admin@websiteln.com?subject=${encodeURIComponent(
         subject
       )}&body=${encodeURIComponent(body)}`;
-
       window.location.href = mailtoUrl;
+    } else {
+      // Perangkat Desktop: Paksa buka antarmuka Gmail Web Compose untuk menghindari pemblokiran mailto
+      const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=admin@websiteln.com&su=${encodeURIComponent(
+        subject
+      )}&body=${encodeURIComponent(body)}`;
+      window.open(gmailWebUrl, "_blank", "noopener,noreferrer");
+    }
+
+    // Kembalikan state loading ke awal setelah jeda singkat
+    setTimeout(() => {
       setLoading(false);
-    }, 1200);
+    }, 800);
   };
 
   return (
@@ -101,14 +106,13 @@ ${projectDescription}`;
           beamWidth={1.5}
           beamHeight={20}
           beamNumber={14}
-          lightColor="#ead98d" // Gold Light
+          lightColor="#ead98d"
           speed={1.5}
           noiseIntensity={1.5}
           scale={0.15}
           rotation={30}
         />
       </div>
-
       <div className="absolute inset-0 z-[2] bg-gradient-to-b from-zinc-950 via-transparent to-transparent pointer-events-none" />
 
       {/* Main Content */}
@@ -118,11 +122,9 @@ ${projectDescription}`;
           <span className="text-xs text-gold-light tracking-[0.2em] uppercase font-semibold mb-4">
             KONSULTASI GRATIS
           </span>
-          {/* Judul diubah menjadi lebih menjual sesuai Opsi A */}
           <h2 className="text-3xl md:text-5xl font-light text-zinc-100 tracking-tight leading-snug">
             Serahkan Kebutuhan IT Anda, Biar Kami Yang Eksekusi.
           </h2>
-          {/* Deskripsi tetap utuh seperti sebelumnya sesuai permintaan Anda */}
           <p className="text-sm text-zinc-400 font-light mt-6 leading-relaxed">
             Punya kendala dengan proses manual, butuh website baru, atau ingin membuat sistem aplikasi khusus? Jangan ragu untuk berdiskusi dengan kami. Sampaikan masalah operasional Anda, dan kami akan bantu merancang solusi teknologi yang paling pas.
           </p>
@@ -137,7 +139,6 @@ ${projectDescription}`;
                 {error}
               </div>
             )}
-
             <div>
               <label className="text-xs text-zinc-400 font-semibold tracking-wider uppercase block mb-2">
                 Nama Lengkap
@@ -151,7 +152,6 @@ ${projectDescription}`;
                 disabled={loading}
               />
             </div>
-
             <div>
               <label className="text-xs text-zinc-400 font-semibold tracking-wider uppercase block mb-2">
                 Alamat Email Korporat
@@ -165,7 +165,6 @@ ${projectDescription}`;
                 disabled={loading}
               />
             </div>
-
             <div>
               <label className="text-xs text-zinc-400 font-semibold tracking-wider uppercase block mb-2">
                 Nama Perusahaan
@@ -179,7 +178,6 @@ ${projectDescription}`;
                 disabled={loading}
               />
             </div>
-
             <div>
               <label className="text-xs text-zinc-400 font-semibold tracking-wider uppercase block mb-2">
                 Pilihan Layanan
@@ -193,7 +191,6 @@ ${projectDescription}`;
                   <SelectValue placeholder="Pilih Paket Layanan" />
                 </SelectTrigger>
                 <SelectContent>
-                  {/* PILIHAN PAKET SUDAH DISESUAIKAN DENGAN YANG BARU */}
                   <SelectItem value="Starter Web">
                     Starter Web (Landing Page Dasar)
                   </SelectItem>
@@ -209,7 +206,6 @@ ${projectDescription}`;
                 </SelectContent>
               </Select>
             </div>
-
             <div>
               <label className="text-xs text-zinc-400 font-semibold tracking-wider uppercase block mb-2">
                 Deskripsi Kebutuhan Projek
@@ -224,7 +220,6 @@ ${projectDescription}`;
                 className="flex w-full rounded-sm border border-zinc-800 bg-zinc-900/50 px-3 py-2 text-sm text-zinc-100 placeholder:text-zinc-500 focus-visible:outline-none focus-visible:border-gold-dark/50 focus-visible:ring-1 focus-visible:ring-gold-dark/20 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200 resize-none"
               />
             </div>
-
             <Button
               type="submit"
               disabled={loading}

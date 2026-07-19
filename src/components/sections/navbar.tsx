@@ -3,10 +3,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -17,6 +17,10 @@ if (typeof window !== "undefined") {
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const headerRef = useRef<HTMLElement>(null);
+  
+  // Hook Router untuk navigasi cerdas
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const el = headerRef.current;
@@ -69,6 +73,14 @@ export const Navbar: React.FC = () => {
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsOpen(false);
+
+    // Cross-page Navigation Logic
+    if (pathname !== "/") {
+      router.push(`/${href}`);
+      return;
+    }
+
+    // Identical page smooth scroll
     const targetElement = document.querySelector(href);
     if (targetElement) {
       const offset = 80;
@@ -78,6 +90,20 @@ export const Navbar: React.FC = () => {
         top: offsetPosition,
         behavior: "smooth",
       });
+    }
+  };
+
+  const navigateToContact = () => {
+    setIsOpen(false);
+    if (pathname !== "/") {
+      router.push("/#contact");
+      return;
+    }
+    const target = document.querySelector("#contact");
+    if (target) {
+      const offset = 80;
+      const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: pos, behavior: "smooth" });
     }
   };
 
@@ -107,7 +133,7 @@ export const Navbar: React.FC = () => {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleScrollTo(e, link.href)}
-                className="text-sm font-light tracking-wide text-zinc-400 hover:text-gold-light transition-colors duration-200"
+                className="text-sm font-light tracking-wide text-zinc-400 hover:text-gold-light transition-colors duration-200 cursor-pointer"
               >
                 {link.label}
               </a>
@@ -117,14 +143,7 @@ export const Navbar: React.FC = () => {
           {/* Desktop CTA: Hubungi Kami */}
           <div className="hidden md:block">
             <Button
-              onClick={() => {
-                const target = document.querySelector("#contact");
-                if (target) {
-                  const offset = 80;
-                  const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                  window.scrollTo({ top: pos, behavior: "smooth" });
-                }
-              }}
+              onClick={navigateToContact}
               variant="default"
               className="font-semibold tracking-wider uppercase py-2 px-5 rounded-sm text-xs cursor-pointer"
             >
@@ -143,11 +162,10 @@ export const Navbar: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Drawer - Rendered outside <header> to prevent backdrop-filter height clipping */}
+      {/* Mobile Menu Drawer */}
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop - Full screen dim background with luxury blur */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -156,7 +174,6 @@ export const Navbar: React.FC = () => {
               className="fixed inset-0 z-[60] bg-zinc-950/80 backdrop-blur-md md:hidden"
             />
 
-            {/* Slide-out Panel - Full height luxury drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -165,7 +182,6 @@ export const Navbar: React.FC = () => {
               className="fixed right-0 top-0 bottom-0 w-4/5 max-w-sm z-[70] bg-zinc-950 border-l border-gold-dark/20 p-8 flex flex-col justify-between md:hidden shadow-2xl shadow-gold-dark/10"
             >
               <div>
-                {/* Mobile Drawer Header: Logo and Close Button */}
                 <div className="flex items-center justify-between pb-6 border-b border-zinc-900/60 mb-8">
                   <Image
                     src="/logo.png"
@@ -183,14 +199,13 @@ export const Navbar: React.FC = () => {
                   </button>
                 </div>
 
-                {/* Navigation Links */}
                 <div className="flex flex-col space-y-5">
                   {navLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}
                       onClick={(e) => handleScrollTo(e, link.href)}
-                      className="text-lg font-light tracking-wide text-zinc-300 hover:text-gold-light transition-colors duration-200 border-b border-zinc-900/40 pb-3"
+                      className="text-lg font-light tracking-wide text-zinc-300 hover:text-gold-light transition-colors duration-200 border-b border-zinc-900/40 pb-3 cursor-pointer"
                     >
                       {link.label}
                     </a>
@@ -198,18 +213,9 @@ export const Navbar: React.FC = () => {
                 </div>
               </div>
 
-              {/* Bottom CTA Button */}
               <div className="mt-auto pt-6 border-t border-zinc-900/60">
                 <Button
-                  onClick={() => {
-                    setIsOpen(false);
-                    const target = document.querySelector("#contact");
-                    if (target) {
-                      const offset = 80;
-                      const pos = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                      window.scrollTo({ top: pos, behavior: "smooth" });
-                    }
-                  }}
+                  onClick={navigateToContact}
                   variant="default"
                   className="w-full py-3 rounded-sm text-sm font-semibold tracking-wider uppercase cursor-pointer"
                 >

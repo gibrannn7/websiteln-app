@@ -112,7 +112,7 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3.5">
               <li className="flex items-start text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
                 <Mail className="h-4.5 w-4.5 text-gold-light shrink-0 mr-3 mt-0.5" />
-                <span>websiteln.id@gmail.com</span>
+                <span>admin@websiteln.com</span>
               </li>
               <li className="flex items-start text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
                 <MapPin className="h-4.5 w-4.5 text-gold-light shrink-0 mr-3 mt-0.5" />

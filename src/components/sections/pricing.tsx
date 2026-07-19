@@ -27,83 +27,80 @@ export const Pricing: React.FC = () => {
 
   const packages: PricingPackage[] = [
     {
-      name: "Paket Starter",
-      focus: "Situs Profil Sederhana",
+      name: "Paket KKM (Basic)",
+      focus: "Web Desa / Kelompok Standar",
       price: "Rp 450.000",
-      period: "Satu Kali",
+      period: "Terima Beres",
       features: [
-        "Desain modern 1 Halaman (One Page)",
-        "Responsif di HP & Desktop",
-        "Loading cepat & ringan",
-        "Integrasi tombol chat WhatsApp",
-        "Gratis revisi minor tampilan 1x",
-        "Optimasi pencarian Google (SEO Dasar)",
-        "Panduan cara edit konten mandiri",
+        "Gratis Domain 1 Tahun",
+        "Gratis Hosting Selamanya (Anti Down)",
+        "Desain Web Profil Desa/Kelompok 1 Halaman",
+        "Galeri Foto & Artikel Program Kerja",
+        "Responsif di HP & Laptop",
+        "Tombol Chat WhatsApp Langsung",
+        "Aset Template Proposal untuk Dosen/Desa",
       ],
       waMessage:
-        "Halo WEBSITELN, saya tertarik dengan Paket Starter untuk membuat website profil sederhana.",
+        "Halo WEBSITELN, kelompok KKM saya butuh web proker dengan Paket KKM Basic (Rp 450rb). Boleh diskusi?",
       detailedSpecs:
-        "Paket terjangkau untuk Anda yang baru memulai dan ingin bisnisnya punya kredibilitas di internet. Fokus pada tampilan 1 halaman (one-page) yang elegan, cepat dibuka, dan langsung terhubung ke kontak bisnis Anda tanpa proses rumit. Cocok untuk landing page, personal branding, atau katalog ringkas.",
+        "Paket super hemat khusus mahasiswa KKM/KKN. Dengan iuran kelompok yang sangat ringan, kalian sudah punya Program Kerja Unggulan berupa Website Desa/Kelompok. Biaya ini SUDAH TERMASUK Domain dan Hosting, jadi kalian benar-benar terima beres tanpa biaya bulanan tambahan. Cocok untuk proker dokumentasi dan profil wilayah.",
     },
     {
-      name: "Paket Mahasiswa (KKM)",
-      focus: "Web Desa, UMKM & Proker",
+      name: "Paket KKM (Sistem Pro)",
+      focus: "Proker Digitalisasi & Pendataan",
       price: "Rp 650.000",
-      period: "Satu Kali",
+      period: "Terima Beres",
       isPopular: true,
       features: [
-        "Desain modern dan interaktif",
-        "Responsive di HP, tablet, dan laptop",
-        "SEO friendly supaya lebih mudah ditemukan",
-        "Loading cepat dan ringan",
-        "Integrasi WhatsApp/Telegram",
-        "Form pendataan atau pendaftaran online",
-        "Galeri kegiatan dan dokumentasi",
-        "Halaman profil desa, kelompok / UMKM",
-        "Publish siap akses di browser",
-        "Setelah selesai tetap bisa dikelola sendiri"
+        "Semua fitur di Paket Basic",
+        "Sistem Pendataan Warga / UMKM Desa",
+        "Dashboard Admin Sederhana (Kelola Data)",
+        "Form Pengaduan / Aspirasi Warga",
+        "Desain Multi-halaman (Lebih Profesional)",
+        "Panduan presentasi sistem ke Kepala Desa",
+        "Garansi perbaikan bug selama proker jalan",
       ],
       waMessage:
-        "Halo WEBSITELN, saya tertarik dengan Paket Mahasiswa KKM untuk keperluan proker/desa/UMKM.",
+        "Halo WEBSITELN, saya tertarik dengan Paket KKM Sistem Pro (Rp 650rb) yang ada fitur pendataannya. Boleh info detail?",
       detailedSpecs:
-        "Paket khusus mahasiswa atau kelompok untuk keperluan Proker KKM/KKN. Bisa disesuaikan penuh untuk website desa, UMKM, profil kelompok, maupun program kerja lainnya. Sudah dilengkapi dengan fitur pendataan warga/peserta dan galeri dokumentasi kegiatan yang lengkap.",
+        "Bikin DPL (Dosen Pembimbing Lapangan) dan Kepala Desa kagum! Paket ini bukan sekadar web profil biasa, tapi dilengkapi sistem pendataan dinamis (misal: sensus warga, direktori UMKM desa, atau form surat pengantar). Sangat direkomendasikan untuk kelompok yang mengusung tema 'Digitalisasi Desa'.",
     },
     {
-      name: "Lite Fix & Feature",
-      focus: "Perbaikan & Fitur Mikro",
-      price: "Rp 750.000",
+      name: "IT Fix & Tugas Kuliah",
+      focus: "Perbaikan Bug & Bantuan Ngoding",
+      price: "Rp 250.000",
       period: "Per Request",
       features: [
-        "Perbaikan bug & error dengan cepat",
-        "Pembuatan 1-2 fitur baru skala kecil",
-        "Penyesuaian tampilan & layout (minor)",
-        "Optimasi kecepatan kode ringan",
-        "Konsultasi & peninjauan kode langsung",
-        "Garansi kode berjalan lancar",
+        "Perbaikan Error / Bug kode (PHP, JS, Python)",
+        "Konsultasi arsitektur sistem / skripsi",
+        "Bantuan pembuatan fitur spesifik (Mikro)",
+        "Optimasi database & query",
+        "Pengerjaan cepat (Bisa hitungan jam/hari)",
+        "Penjelasan alur kode (Biar bisa presentasi)",
       ],
       waMessage:
-        "Halo WEBSITELN, saya butuh perbaikan atau penambahan fitur sistem dengan Paket Lite Fix.",
+        "Halo WEBSITELN, saya butuh bantuan perbaikan kode/fitur (Paket IT Fix). Bisa bantu cek sistem saya?",
       detailedSpecs:
-        "Solusi cepat bagi Anda yang sudah memiliki website/sistem namun mengalami kendala (error/bug) mendesak, atau butuh menambahkan 1 hingga 2 fitur skala kecil baru. Pengerjaan akan dieksekusi dengan cepat, rapi, dan bergaransi.",
+        "Stuck ngerjain tugas kuliah, project dosen, atau skripsi yang error terus? Kami bantu perbaiki bug sistem Anda atau buatkan fitur spesifik yang Anda butuhkan dengan cepat. Kami juga akan jelaskan alur kodenya agar Anda paham saat ditanya oleh dosen.",
     },
     {
-      name: "Pro Business",
-      focus: "Situs Perusahaan Premium",
+      name: "Corporate & UMKM",
+      focus: "Situs Bisnis Profesional",
       price: "Rp 950.000",
       period: "Satu Kali",
       features: [
-        "Desain Premium (Multi-halaman)",
-        "Animasi & Efek Interaktif",
-        "Optimasi SEO Tingkat Lanjut",
-        "Dashboard Admin Sederhana",
-        "Integrasi Social Media & Maps",
-        "Keamanan SSL Tingkat Lanjut",
-        "Dukungan Teknis 1 Bulan penuh",
+        "Desain Premium & Animasi Eksklusif",
+        "Gratis Domain (.com / .co.id) 1 Tahun",
+        "Optimasi SEO (Tampil di Halaman Google)",
+        "Integrasi Email Bisnis (nama@perusahaan.com)",
+        "Dashboard CMS Manajemen Konten",
+        "Keamanan SSL & Anti-DDoS",
+        "Dukungan Teknis Prioritas 1 Bulan",
       ],
       waMessage:
-        "Halo WEBSITELN, saya butuh website perusahaan profesional dengan Paket Pro Business.",
+        "Halo WEBSITELN, saya butuh website perusahaan/bisnis profesional dengan Paket Corporate. Boleh konsultasi?",
       detailedSpecs:
-        "Website company profile profesional untuk perusahaan, agensi, dan bisnis yang sedang berkembang. Sudah dilengkapi dengan berbagai halaman terpisah (Tentang Kami, Layanan, Kontak, Portofolio) serta dashboard sederhana untuk manajemen konten. Menjamin performa dan keamanan jangka panjang.",
+        "Solusi digital end-to-end untuk UMKM besar, CV, atau PT yang ingin tampil sangat profesional. Menggunakan teknologi modern (Next.js/React) yang super cepat, bukan WordPress template biasa. Dilengkapi email bisnis profesional dan optimasi mesin pencari (SEO) untuk menjangkau klien baru.",
     }
   ];
 
@@ -116,25 +113,22 @@ export const Pricing: React.FC = () => {
 
   return (
     <section id="pricing" className="bg-zinc-950 py-32 px-6 relative z-10">
-      {/* Top seamless transition gradient mask */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-gold-dark/20 to-transparent" />
 
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-24">
           <span className="text-xs text-gold-light tracking-[0.2em] uppercase font-semibold mb-4">
             PILIHAN PAKET LAYANAN
           </span>
           <h2 className="text-3xl md:text-5xl font-light text-zinc-100 tracking-tight leading-snug max-w-2xl">
-            Rencana Investasi Teknologi yang Fleksibel untuk Bisnis Anda
+            Solusi Digital yang Fleksibel Sesuai Kebutuhan Anda
           </h2>
           <p className="text-sm text-zinc-400 font-light max-w-lg mt-6 leading-relaxed">
-            Pilih skala pengembangan yang paling sesuai dengan kebutuhan operasional saat ini. Semua proyek dikerjakan secara transparan tanpa biaya tersembunyi.
+            Dari proker mahasiswa hingga infrastruktur bisnis perusahaan. Harga transparan, sistem hak milik sepenuhnya, tanpa biaya langganan server tersembunyi.
           </p>
           <div className="h-[2px] w-16 bg-gold-dark/40 mt-8" />
         </div>
 
-        {/* Pricing Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {packages.map((pkg, index) => {
             const hasMoreFeatures = pkg.features.length > 5;
@@ -150,7 +144,6 @@ export const Pricing: React.FC = () => {
                     : "border-zinc-900 bg-zinc-900/10 hover:border-zinc-800"
                 }`}
               >
-                {/* Popular Badge */}
                 {pkg.isPopular && (
                   <div className="absolute top-0 right-6 transform -translate-y-1/2 bg-gold-dark text-zinc-50 text-[10px] tracking-widest uppercase font-semibold py-1.5 px-4 rounded-sm shadow-md">
                     REKOMENDASI
@@ -158,7 +151,6 @@ export const Pricing: React.FC = () => {
                 )}
 
                 <div>
-                  {/* Package Header */}
                   <span className="text-[10px] text-zinc-500 uppercase tracking-widest font-bold block mb-3">
                     {pkg.focus}
                   </span>
@@ -166,17 +158,15 @@ export const Pricing: React.FC = () => {
                     {pkg.name}
                   </h3>
 
-                  {/* Price */}
                   <div className="mb-8 border-b border-zinc-900/80 pb-6">
                     <span className="text-2xl md:text-3xl font-light text-gold-light">
                       {pkg.price}
                     </span>
                     <span className="text-xs text-zinc-500 block mt-1">
-                      Estimasi Harga / {pkg.period}
+                      {pkg.period}
                     </span>
                   </div>
 
-                  {/* Features List */}
                   <ul className="space-y-4 mb-6">
                     {displayedFeatures.map((feature, idx) => (
                       <li key={idx} className="flex items-start text-xs leading-relaxed text-zinc-400 font-light">
@@ -186,7 +176,6 @@ export const Pricing: React.FC = () => {
                     ))}
                   </ul>
 
-                  {/* Truncated Text Trigger */}
                   {hasMoreFeatures && (
                     <button
                       onClick={() => setSelectedSpecs(pkg)}
@@ -197,7 +186,6 @@ export const Pricing: React.FC = () => {
                   )}
                 </div>
 
-                {/* CTA Button */}
                 <Button
                   onClick={() => handleSelectPackage(pkg.waMessage)}
                   variant={pkg.isPopular ? "default" : "outline"}
@@ -211,7 +199,6 @@ export const Pricing: React.FC = () => {
         </div>
       </div>
 
-      {/* Pop-up Modal Detail Spesifikasi Paket */}
       <Dialog open={selectedSpecs !== null} onOpenChange={(open) => !open && setSelectedSpecs(null)}>
         {selectedSpecs && (
           <DialogContent className="max-w-[90vw] sm:max-w-[550px] bg-zinc-950 border border-zinc-850 p-7 rounded-sm shadow-2xl">

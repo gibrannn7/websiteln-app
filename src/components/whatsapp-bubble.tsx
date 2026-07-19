@@ -8,7 +8,7 @@ export const WhatsAppBubble: React.FC = () => {
   const handleClick = () => {
     const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "+62 817-7495-2006";
     const cleanNumber = rawNumber.replace(/[^0-9]/g, "");
-    const message = "Halo min, saya ingin berkonsultasi mengenai kebutuhan jasa pengembangan IT dan otomasi untuk bisnis saya.";
+    const message = "Halo tim WEBSITELN, saya kebetulan mampir ke website portofolionya dan tertarik buat diskusi soal pembuatan website/sistem. Boleh minta info lebih detail?";
     const url = `https://wa.me/${cleanNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
