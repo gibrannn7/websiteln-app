@@ -191,17 +191,17 @@ export const ContactForm: React.FC = () => {
                   <SelectValue placeholder="Pilih Paket Layanan" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="Starter Web">
-                    Starter Web (Landing Page Dasar)
+                  <SelectItem value="Paket Proker KKM (Basic)">
+                    Paket Proker KKM (Basic - Rp 450k)
                   </SelectItem>
-                  <SelectItem value="Paket KKM (Mahasiswa)">
-                    Paket KKM (Web Desa / Proker Mahasiswa)
+                  <SelectItem value="Paket Proker KKM (Sistem Pro)">
+                    Paket Proker KKM (Sistem Pro - Rp 700k)
                   </SelectItem>
-                  <SelectItem value="Lite Fix & Feature">
-                    Lite Fix & Feature (Perbaikan / Fitur Mikro)
+                  <SelectItem value="Rekayasa Sistem Skripsi / TA">
+                    Rekayasa Sistem Skripsi / TA (Mulai Rp 1.5jt)
                   </SelectItem>
-                  <SelectItem value="Pro Business">
-                    Pro Business (Company Profile Profesional)
+                  <SelectItem value="Python Automation & AI">
+                    Python Automation & AI (Mulai Rp 1.25jt)
                   </SelectItem>
                 </SelectContent>
               </Select>

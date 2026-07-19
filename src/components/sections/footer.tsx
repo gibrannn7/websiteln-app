@@ -89,7 +89,7 @@ export const Footer: React.FC = () => {
                   onClick={(e) => handleScrollTo(e, "#pricing")}
                   className="text-xs md:text-sm text-zinc-400 hover:text-gold-light transition-colors font-light"
                 >
-                  Matriks Investasi
+                  Harga
                 </a>
               </li>
               <li>
@@ -109,7 +109,7 @@ export const Footer: React.FC = () => {
             <span className="text-xs text-zinc-350 font-semibold uppercase tracking-widest">
               Hubungi Kami
             </span>
-            <ul className="space-y-3.5">
+            <ul className="space-y-3.5 mb-4">
               <li className="flex items-start text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
                 <Mail className="h-4.5 w-4.5 text-gold-light shrink-0 mr-3 mt-0.5" />
                 <span>admin@websiteln.com</span>
@@ -119,6 +119,40 @@ export const Footer: React.FC = () => {
                 <span>Kota Serang, Banten, Indonesia</span>
               </li>
             </ul>
+
+            {/* Social Media Links */}
+            <span className="text-xs text-zinc-350 font-semibold uppercase tracking-widest mt-6">
+              Media Sosial
+            </span>
+            <div className="flex items-center gap-4 mt-2">
+              <a 
+                href="https://www.instagram.com/websiteln.id/" 
+                target="_blank" 
+                rel="noreferrer noopener"
+                className="w-10 h-10 rounded-sm bg-zinc-900/50 border border-zinc-800 flex items-center justify-center hover:bg-gold-dark/10 hover:border-gold-dark/40 transition-all duration-300 group"
+                aria-label="Instagram websiteln"
+              >
+                <Image src="/logo/svg/sosmed/ig.svg" alt="Instagram" width={20} height={20} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a 
+                href="https://www.tiktok.com/@websiteln.id" 
+                target="_blank" 
+                rel="noreferrer noopener"
+                className="w-10 h-10 rounded-sm bg-zinc-900/50 border border-zinc-800 flex items-center justify-center hover:bg-gold-dark/10 hover:border-gold-dark/40 transition-all duration-300 group"
+                aria-label="TikTok websiteln"
+              >
+                <Image src="/logo/svg/sosmed/tiktok.svg" alt="TikTok" width={20} height={20} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+              </a>
+              <a 
+                href="https://www.youtube.com/@websiteln" 
+                target="_blank" 
+                rel="noreferrer noopener"
+                className="w-10 h-10 rounded-sm bg-zinc-900/50 border border-zinc-800 flex items-center justify-center hover:bg-gold-dark/10 hover:border-gold-dark/40 transition-all duration-300 group"
+                aria-label="YouTube websiteln"
+              >
+                <Image src="/logo/svg/sosmed/yt.svg" alt="YouTube" width={20} height={20} className="opacity-60 group-hover:opacity-100 transition-opacity" />
+              </a>
+            </div>
           </div>
         </div>
 

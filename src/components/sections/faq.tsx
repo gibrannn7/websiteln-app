@@ -17,32 +17,70 @@ export const Faq: React.FC = () => {
   const faqs: FaqItem[] = [
     {
       question:
-        "Apakah websiteln bisa membantu mengelola website yang dibangun dengan teknologi lama seperti CodeIgniter?",
+        "Apakah harga pembuatan website KKM sudah termasuk domain dan hosting?",
       answer:
-        "Tentu saja. Kami memiliki keahlian mendalam baik pada arsitektur modern berbasis Next.js maupun arsitektur warisan seperti CodeIgniter 3. Kami dapat melakukan pemeliharaan rutin, penambahan fitur baru, hingga perbaikan performa kode lama Anda.",
+        "Betul. Semua paket Proker KKM kami sudah termasuk layanan hosting prioritas gratis selamanya dan pendaftaran domain (.my.id/.biz.id) untuk tahun pertama. Tidak ada biaya bulanan server yang disembunyikan, sehingga sangat aman untuk laporan program kerja kelompok Anda.",
     },
     {
       question:
-        "Bagaimana sistem kerja Paket Langganan Pemeliharaan (Elite Care Subscription)?",
+        "Berapa lama waktu pengerjaan untuk satu proyek website atau sistem aplikasi?",
       answer:
-        "Melalui program langganan ini, tim pengembang kami bertindak sebagai departemen IT eksternal Anda. Kami mengurus pembaruan konten, memantau kinerja infrastruktur, mengelola perpanjangan hosting/domain, serta langsung menangani perbaikan jika terjadi kendala teknis tanpa biaya tambahan di luar biaya bulanan.",
+        "Untuk website Proker KKM (Basic) memakan waktu 1 hingga 3 hari kerja. Sedangkan untuk sistem yang lebih kompleks seperti Tugas Akhir (Skripsi) atau sistem otomasi perusahaan, biasanya membutuhkan 7 hingga 14 hari kerja tergantung tingkat kerumitan fitur yang disepakati.",
     },
     {
       question:
-        "Apakah biaya paket pengembangan sudah termasuk proses deployment ke server publik?",
+        "Apakah sistem Skripsi / Tugas Akhir dijamin lolos dan ada garansi revisi?",
       answer:
-        "Ya, seluruh paket pengembangan aplikasi kami sudah mencakup konfigurasi pipeline CI/CD hingga aplikasi Anda berjalan dengan sempurna di server produksi publik seperti Vercel, Railway, atau VPS pilihan Anda.",
+        "Kami menjamin sistem berfungsi 100% sesuai dengan fitur yang disepakati di awal (Sesi Brainstorming). Paket Skripsi kami juga sudah mencakup hingga 3x Revisi Minor, ditambah sesi orientasi kode, agar Anda benar-benar menguasai alur sistem saat ditanya oleh dosen penguji.",
     },
     {
       question:
-        "Bagaimana keamanan data terjaga pada proyek otomasi pengikisan data web (web scraping)?",
+        "Saya tidak paham IT (Non-Teknis), apakah diajari cara menggunakan sistemnya?",
       answer:
-        "Kami membangun skrip otomatisasi Python dengan mematuhi protokol keamanan data tingkat tinggi dan etika pengambilan data web. Seluruh data hasil ekstraksi disimpan dengan enkripsi penuh di lingkungan database yang aman dan terisolasi.",
+        "Tentu saja. Setelah website atau sistem selesai dibuat, kami akan memberikan panduan operasional lengkap. Kami merancang arsitektur dashboard admin yang sangat ramah pengguna, sehingga Anda dapat mengubah teks, foto, atau menambah data semudah bermain media sosial.",
+    },
+    {
+      question:
+        "Bisakah WEBSITELN membuat skrip otomasi (Bot) atau web scraping khusus?",
+      answer:
+        "Sangat bisa. Kami berspesialisasi dalam membangun infrastruktur otomasi Python untuk efisiensi bisnis. Mulai dari bot balasan otomatis, ekstraksi data web (scraping) ke Excel, sinkronisasi database, hingga integrasi asisten kecerdasan buatan (OpenAI/ChatGPT).",
+    },
+    {
+      question:
+        "Apakah saya bisa upgrade atau menambah fitur di kemudian hari setelah web selesai?",
+      answer:
+        "Bisa. Sistem kami dibangun menggunakan arsitektur modern (Next.js & React) yang sangat skalabel. Jika di masa depan Anda membutuhkan fitur tambahan yang lebih kompleks, Anda cukup mengajukan pengembangan fitur dengan harga yang terjangkau.",
+    },
+    {
+      question:
+        "Bagaimana prosedur pembayaran di WEBSITELN? Apakah aman?",
+      answer:
+        "Prosedur pembayaran kami sangat aman dan transparan. Kami menerapkan sistem bertahap: Uang Muka (DP) sebesar 50% dibayarkan setelah sesi Brainstorming spesifikasi selesai. Pelunasan sisa 50% dibayarkan HANYA ketika sistem sudah 100% selesai dan siap diserahterimakan kepada Anda.",
     },
   ];
 
+  // Skema JSON-LD untuk SEO Google (Rich Snippets)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
     <section id="faq" className="bg-zinc-950 py-32 px-6 relative z-10">
+      {/* Injeksi SEO Schema langsung ke DOM */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       {/* Top seamless transition gradient mask */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-gold-dark/20 to-transparent" />
 
@@ -53,7 +91,7 @@ export const Faq: React.FC = () => {
             PERTANYAAN UMUM
           </span>
           <h2 className="text-3xl md:text-5xl font-light text-zinc-100 tracking-tight leading-snug">
-            Pertanyaan Yang Sering Diajukan
+            Informasi Layanan Eksekutif
           </h2>
           <div className="h-[2px] w-16 bg-gold-dark/40 mt-8" />
         </div>
@@ -66,7 +104,7 @@ export const Faq: React.FC = () => {
               value={`faq-item-${index}`}
               className="border border-zinc-900/50 bg-zinc-900/10 hover:border-gold-dark/20 px-6 rounded-sm transition-all duration-300"
             >
-              <AccordionTrigger className="text-zinc-200 hover:text-gold-light py-5 text-sm md:text-base font-light font-sans tracking-wide">
+              <AccordionTrigger className="text-zinc-200 hover:text-gold-light py-5 text-sm md:text-base font-light font-sans tracking-wide text-left">
                 {faq.question}
               </AccordionTrigger>
               <AccordionContent className="text-zinc-400 font-light text-xs md:text-sm leading-relaxed pb-5 pt-1">

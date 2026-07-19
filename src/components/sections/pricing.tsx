@@ -15,8 +15,9 @@ interface PricingPackage {
   name: string;
   focus: string;
   price: string;
+  originalPrice?: string;
   period: string;
-  features: string[];
+  features: React.ReactNode[];
   waMessage: string;
   isPopular?: boolean;
   detailedSpecs: string;
@@ -27,80 +28,148 @@ export const Pricing: React.FC = () => {
 
   const packages: PricingPackage[] = [
     {
-      name: "Paket KKM (Basic)",
-      focus: "Web Desa / Kelompok Standar",
+      name: "Proker KKM (Basic)",
+      focus: "Cocok untuk: Profil Desa Singkat",
       price: "Rp 450.000",
+      originalPrice: "Rp 750.000",
       period: "Terima Beres",
       features: [
-        "Gratis Domain 1 Tahun",
-        "Gratis Hosting Selamanya (Anti Down)",
-        "Desain Web Profil Desa/Kelompok 1 Halaman",
-        "Galeri Foto & Artikel Program Kerja",
-        "Responsif di HP & Laptop",
-        "Tombol Chat WhatsApp Langsung",
-        "Aset Template Proposal untuk Dosen/Desa",
+        "Sistem siap dalam 1 Hari Kerja",
+        <span key="domain" className="inline-flex items-center gap-1.5">
+          Gratis Domain 1 Tahun 
+          <div className="relative group flex items-center cursor-help">
+            <Info className="h-3.5 w-3.5 text-zinc-500 group-hover:text-gold-light transition-colors shrink-0" />
+            <div className="absolute bottom-full right-0 mb-2.5 w-max max-w-[220px] p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-200 text-[10px] leading-relaxed rounded-sm shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[99] text-left">
+              Ekstensi domain gratis 1 tahun: .my.id
+              <div className="absolute -bottom-1 right-[2px] w-2.5 h-2.5 bg-zinc-900 border-b border-r border-zinc-700 rotate-45"></div>
+            </div>
+          </div>
+        </span>,
+        <span key="hosting" className="inline-flex items-center gap-1.5">
+          Gratis Hosting Bebas Kendala 
+          <div className="relative group flex items-center cursor-help">
+            <Info className="h-3.5 w-3.5 text-zinc-500 group-hover:text-gold-light transition-colors shrink-0" />
+            <div className="absolute bottom-full right-0 mb-2.5 w-max max-w-[220px] p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-200 text-[10px] leading-relaxed rounded-sm shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[99] text-left">
+              Hosting premium Vercel/Netlify. Bebas down dan tidak ada biaya perpanjangan bulanan.
+              <div className="absolute -bottom-1 right-[2px] w-2.5 h-2.5 bg-zinc-900 border-b border-r border-zinc-700 rotate-45"></div>
+            </div>
+          </div>
+        </span>,
+        "Situs Profil Desa/Kelompok 1 Halaman",
+        "Integrasi Navigasi Chat Otomatis",
+        "Revisi Minor Tampilan 1x"
       ],
       waMessage:
-        "Halo WEBSITELN, kelompok KKM saya butuh web proker dengan Paket KKM Basic (Rp 450rb). Boleh diskusi?",
+        "Halo WEBSITELN, kelompok KKM saya berminat dengan Paket Proker KKM Basic (Rp 450rb). Boleh dijadwalkan sesi konsultasi?",
       detailedSpecs:
-        "Paket super hemat khusus mahasiswa KKM/KKN. Dengan iuran kelompok yang sangat ringan, kalian sudah punya Program Kerja Unggulan berupa Website Desa/Kelompok. Biaya ini SUDAH TERMASUK Domain dan Hosting, jadi kalian benar-benar terima beres tanpa biaya bulanan tambahan. Cocok untuk proker dokumentasi dan profil wilayah.",
+        "Solusi efisien untuk kelompok KKM yang memerlukan luaran program kerja digital yang nyata. Spesifikasi: Landing page 1 halaman (statis), mencakup profil desa, galeri kegiatan terbatas, dan navigasi kontak. Paket ini mengedepankan kecepatan serah terima. Tanpa biaya perpanjangan server tersembunyi.",
     },
     {
-      name: "Paket KKM (Sistem Pro)",
-      focus: "Proker Digitalisasi & Pendataan",
-      price: "Rp 650.000",
+      name: "Proker KKM (Sistem Pro)",
+      focus: "Cocok untuk: Digitalisasi Desa",
+      price: "Rp 700.000",
+      originalPrice: "Rp 1.200.000",
       period: "Terima Beres",
       isPopular: true,
       features: [
-        "Semua fitur di Paket Basic",
-        "Sistem Pendataan Warga / UMKM Desa",
-        "Dashboard Admin Sederhana (Kelola Data)",
-        "Form Pengaduan / Aspirasi Warga",
-        "Desain Multi-halaman (Lebih Profesional)",
-        "Panduan presentasi sistem ke Kepala Desa",
-        "Garansi perbaikan bug selama proker jalan",
+        "Desain Arsitektur Multi-Halaman",
+        "Formulir Pendataan Warga Dinamis",
+        "Panel Dasbor Kelola Data",
+        <span key="role" className="inline-flex items-center gap-1.5">
+          Multi Role Akses (2 Aktor) 
+          <div className="relative group flex items-center cursor-help">
+            <Info className="h-3.5 w-3.5 text-zinc-500 group-hover:text-gold-light transition-colors shrink-0" />
+            <div className="absolute bottom-full right-0 mb-2.5 w-max max-w-[220px] p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-200 text-[10px] leading-relaxed rounded-sm shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[99] text-left">
+              Login terpisah untuk Warga dan Kepala Desa/Admin
+              <div className="absolute -bottom-1 right-[2px] w-2.5 h-2.5 bg-zinc-900 border-b border-r border-zinc-700 rotate-45"></div>
+            </div>
+          </div>
+        </span>,
+        "Direktori UMKM & Potensi Desa",
+        <span key="domhost" className="inline-flex items-center gap-1.5">
+          Gratis Domain & Hosting Eksekutif 
+          <div className="relative group flex items-center cursor-help">
+            <Info className="h-3.5 w-3.5 text-zinc-500 group-hover:text-gold-light transition-colors shrink-0" />
+            <div className="absolute bottom-full right-0 mb-2.5 w-max max-w-[220px] p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-200 text-[10px] leading-relaxed rounded-sm shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[99] text-left">
+              Gratis Domain (.my.id) 1 tahun dan Hosting selamanya.
+              <div className="absolute -bottom-1 right-[2px] w-2.5 h-2.5 bg-zinc-900 border-b border-r border-zinc-700 rotate-45"></div>
+            </div>
+          </div>
+        </span>,
+        "Gratis Perbaikan Bug Selama Proker",
+        "Revisi Struktur Minor 2x",
       ],
       waMessage:
-        "Halo WEBSITELN, saya tertarik dengan Paket KKM Sistem Pro (Rp 650rb) yang ada fitur pendataannya. Boleh info detail?",
+        "Halo WEBSITELN, saya tertarik merancang web pendataan desa dengan Paket KKM Sistem Pro (Rp 700rb). Mohon info prosedurnya.",
       detailedSpecs:
-        "Bikin DPL (Dosen Pembimbing Lapangan) dan Kepala Desa kagum! Paket ini bukan sekadar web profil biasa, tapi dilengkapi sistem pendataan dinamis (misal: sensus warga, direktori UMKM desa, atau form surat pengantar). Sangat direkomendasikan untuk kelompok yang mengusung tema 'Digitalisasi Desa'.",
+        "Didesain khusus untuk program kerja unggulan (Digitalisasi Desa). Spesifikasi: Arsitektur multi-halaman interaktif, dilengkapi basis data dinamis untuk mendata warga atau UMKM lokal, serta formulir aduan terpusat. Output dijamin melampaui standar ekspektasi Dosen Pembimbing Lapangan.",
     },
     {
-      name: "IT Fix & Tugas Kuliah",
-      focus: "Perbaikan Bug & Bantuan Ngoding",
-      price: "Rp 250.000",
-      period: "Per Request",
+      name: "Sistem Aplikasi Skripsi",
+      focus: "Cocok untuk: Tugas Akhir Mahasiswa",
+      price: "Rp 2.000.000",
+      originalPrice: "Rp 4.000.000",
+      period: "Satu Siklus Revisi",
       features: [
-        "Perbaikan Error / Bug kode (PHP, JS, Python)",
-        "Konsultasi arsitektur sistem / skripsi",
-        "Bantuan pembuatan fitur spesifik (Mikro)",
-        "Optimasi database & query",
-        "Pengerjaan cepat (Bisa hitungan jam/hari)",
-        "Penjelasan alur kode (Biar bisa presentasi)",
+        <span key="role" className="inline-flex items-center gap-1.5">
+          Multi Role Akses (Maks. 2 Aktor) 
+          <div className="relative group flex items-center cursor-help">
+            <Info className="h-3.5 w-3.5 text-zinc-500 group-hover:text-gold-light transition-colors shrink-0" />
+            <div className="absolute bottom-full right-0 mb-2.5 w-max max-w-[220px] p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-200 text-[10px] leading-relaxed rounded-sm shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[99] text-left">
+              Contoh: Level Admin dan User Biasa.
+              <div className="absolute -bottom-1 right-[2px] w-2.5 h-2.5 bg-zinc-900 border-b border-r border-zinc-700 rotate-45"></div>
+            </div>
+          </div>
+        </span>,
+        "Operasi Basis Data Lengkap (CRUD)",
+        <span key="api" className="inline-flex items-center gap-1.5">
+          Integrasi API Eksternal Terukur 
+          <div className="relative group flex items-center cursor-help">
+            <Info className="h-3.5 w-3.5 text-zinc-500 group-hover:text-gold-light transition-colors shrink-0" />
+            <div className="absolute bottom-full right-0 mb-2.5 w-max max-w-[220px] p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-200 text-[10px] leading-relaxed rounded-sm shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[99] text-left">
+              Mulai dari 1 integrasi gratis (contoh: Maps, Whatsapp API). Penambahan seperti Payment Gateway disesuaikan.
+              <div className="absolute -bottom-1 right-[2px] w-2.5 h-2.5 bg-zinc-900 border-b border-r border-zinc-700 rotate-45"></div>
+            </div>
+          </div>
+        </span>,
+        "Dokumentasi Alur Kode Fungsional",
+        "Penempatan Hosting Produksi",
+        "Revisi Logika & Tampilan 3x",
+        "Sesi Orientasi Kode Sebelum Sidang",
       ],
       waMessage:
-        "Halo WEBSITELN, saya butuh bantuan perbaikan kode/fitur (Paket IT Fix). Bisa bantu cek sistem saya?",
+        "Halo WEBSITELN, saya membutuhkan jasa rekayasa sistem untuk Tugas Akhir/Skripsi (Mulai Rp 2jt). Boleh kita jadwalkan sesi spesifikasi fitur?",
       detailedSpecs:
-        "Stuck ngerjain tugas kuliah, project dosen, atau skripsi yang error terus? Kami bantu perbaiki bug sistem Anda atau buatkan fitur spesifik yang Anda butuhkan dengan cepat. Kami juga akan jelaskan alur kodenya agar Anda paham saat ditanya oleh dosen.",
+        "Paket rekayasa perangkat lunak untuk kebutuhan demonstrasi Tugas Akhir. Layanan ini murni berfokus pada pengembangan sistem fungsional siap uji (tanpa pengerjaan bab laporan/paper). Ruang lingkup dibatasi pada fitur inti (maksimal 2 peran pengguna) agar pengembangan sejalan dengan jadwal sidang Anda.",
     },
     {
-      name: "Corporate & UMKM",
-      focus: "Situs Bisnis Profesional",
-      price: "Rp 950.000",
-      period: "Satu Kali",
+      name: "Python Automation & AI",
+      focus: "Cocok untuk: Efisiensi Bisnis",
+      price: "Rp 1.500.000",
+      originalPrice: "Rp 3.500.000",
+      period: "Per Skrip Otomasi",
       features: [
-        "Desain Premium & Animasi Eksklusif",
-        "Gratis Domain (.com / .co.id) 1 Tahun",
-        "Optimasi SEO (Tampil di Halaman Google)",
-        "Integrasi Email Bisnis (nama@perusahaan.com)",
-        "Dashboard CMS Manajemen Konten",
-        "Keamanan SSL & Anti-DDoS",
-        "Dukungan Teknis Prioritas 1 Bulan",
+        "Ekstraksi Data Otomatis (Web Scraping)",
+        "Otomatisasi Input Basis Data",
+        <span key="ai" className="inline-flex items-center gap-1.5">
+          Integrasi Asisten AI (OpenAI/RAG) 
+          <div className="relative group flex items-center cursor-help">
+            <Info className="h-3.5 w-3.5 text-zinc-500 group-hover:text-gold-light transition-colors shrink-0" />
+            <div className="absolute bottom-full right-0 mb-2.5 w-max max-w-[220px] p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-200 text-[10px] leading-relaxed rounded-sm shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[99] text-left">
+              Penggunaan model NLP untuk analisis data atau asisten virtual.
+              <div className="absolute -bottom-1 right-[2px] w-2.5 h-2.5 bg-zinc-900 border-b border-r border-zinc-700 rotate-45"></div>
+            </div>
+          </div>
+        </span>,
+        "Sistem Balasan Cepat Lintas Platform",
+        "Manipulasi Data Lanjutan (Pandas)",
+        "Pengujian Ketahanan Sistem",
+        "Garansi Berjalan 1 Bulan",
       ],
       waMessage:
-        "Halo WEBSITELN, saya butuh website perusahaan/bisnis profesional dengan Paket Corporate. Boleh konsultasi?",
+        "Halo WEBSITELN, perusahaan/bisnis saya membutuhkan efisiensi alur kerja dengan Paket Python Automation & AI. Boleh jadwalkan diskusi?",
       detailedSpecs:
-        "Solusi digital end-to-end untuk UMKM besar, CV, atau PT yang ingin tampil sangat profesional. Menggunakan teknologi modern (Next.js/React) yang super cepat, bukan WordPress template biasa. Dilengkapi email bisnis profesional dan optimasi mesin pencari (SEO) untuk menjangkau klien baru.",
+        "Tinggalkan rutinitas manual yang repetitif. Kami merancang skrip Python tingkat lanjut untuk otomatisasi ekstraksi data antar platform, sinkronisasi operasional harian, hingga asisten pintar terintegrasi dengan kecerdasan buatan. Mengeliminasi kesalahan manusia dan mempercepat siklus kerja bisnis.",
     }
   ];
 
@@ -159,6 +228,11 @@ export const Pricing: React.FC = () => {
                   </h3>
 
                   <div className="mb-8 border-b border-zinc-900/80 pb-6">
+                    {pkg.originalPrice && (
+                      <span className="text-sm font-medium text-zinc-600 line-through decoration-red-500/50 block mb-1">
+                        {pkg.originalPrice}
+                      </span>
+                    )}
                     <span className="text-2xl md:text-3xl font-light text-gold-light">
                       {pkg.price}
                     </span>
@@ -171,7 +245,7 @@ export const Pricing: React.FC = () => {
                     {displayedFeatures.map((feature, idx) => (
                       <li key={idx} className="flex items-start text-xs leading-relaxed text-zinc-400 font-light">
                         <Check className="h-4 w-4 text-gold-dark shrink-0 mr-2.5 mt-0.5" />
-                        <span>{feature}</span>
+                        <div className="flex-1 w-full min-w-0">{feature}</div>
                       </li>
                     ))}
                   </ul>
@@ -224,7 +298,7 @@ export const Pricing: React.FC = () => {
                 {selectedSpecs.features.map((feature, idx) => (
                   <li key={idx} className="flex items-start text-xs leading-relaxed text-zinc-300 font-light">
                     <Check className="h-4.5 w-4.5 text-gold-light shrink-0 mr-2.5 mt-0.5" />
-                    <span>{feature}</span>
+                    <div className="flex-1 w-full min-w-0">{feature}</div>
                   </li>
                 ))}
               </ul>
