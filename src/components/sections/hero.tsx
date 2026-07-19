@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
-import LightRays from "@/components/LightRays";
+import LineWaves from "@/components/LineWaves";
 
 export const Hero = () => {
   const handleWhatsAppConsultation = () => {
@@ -18,7 +18,7 @@ export const Hero = () => {
   return (
     <section className="relative w-full min-h-[95vh] flex items-center justify-center overflow-hidden bg-[#0A0A0A] py-28 px-6">
       
-      {/* 1. Efek Background (LightRays & Grid) */}
+      {/* 1. Efek Background (LineWaves & Grid) */}
       <div 
         className="absolute inset-0 z-[1] opacity-25 pointer-events-none" 
         style={{
@@ -26,20 +26,21 @@ export const Hero = () => {
           backgroundSize: "24px 24px"
         }}
       />
-      <div className="absolute inset-0 z-[2] opacity-35 pointer-events-none">
-        <LightRays
-          raysOrigin="top-center"
-          raysColor="#DAA520"
-          raysSpeed={0.6}
-          lightSpread={1.3}
-          rayLength={2.6}
-          pulsating={true}
-          fadeDistance={1.3}
-          saturation={0.8}
-          followMouse={true}
-          mouseInfluence={0.06}
-          noiseAmount={0.04}
-          distortion={0.12}
+      <div className="absolute inset-0 z-[2] opacity-70 pointer-events-none">
+        <LineWaves
+          speed={0.09}
+          innerLineCount={8}
+          outerLineCount={14}
+          warpIntensity={0.3}
+          rotation={-40}
+          edgeFadeWidth={0.5}
+          colorCycleSpeed={1.2}
+          brightness={0.13}
+          color1="#ead98d"
+          color2="#a47f2a"
+          color3="#DAA520"
+          enableMouseInteraction
+          mouseInfluence={1.4}
         />
       </div>
 
