@@ -112,7 +112,7 @@ export const portfolioData: PortfolioItem[] = [
     detailedDescription: "Pengembangan web aplikasi kustom terintegrasi untuk mengotomatisasi pemantauan stabilitas jaringan nirkabel, pencatatan log autentikasi pengguna secara real-time, serta visualisasi analitik pipeline data guna mendukung efisiensi riset teknologi informasi.",
     techStack: ["FastAPI", "Python", "Flutter", "Dart", "MySQL", "Midtrans", "Rest API"],
     thumbnailUrl: "/portfolio/wifiskripsi/1.jpg",
-    mediaGallery: Array.from({ length: 5 }, (_, i) => `/portfolio/wifiskripsi/${i + 1}.jpg`)
+    mediaGallery: Array.from({ length: 13 }, (_, i) => `/portfolio/wifiskripsi/${i + 1}.jpg`)
   },
   {
     id: "proj-012",
@@ -121,6 +121,6 @@ export const portfolioData: PortfolioItem[] = [
     detailedDescription: "Platform pendamping ibadah Ramadhan kustom yang komprehensif. Menghadirkan otomatisasi waktu adzan koordinat dinamis, penjejak (tracker) konsistensi salat wajib, Al-Qur'an digital, kalkulator sedekah, counter tasbih interaktif, hingga jurnal refleksi harian guna mengoptimalkan manajemen spiritual pengguna.",
     techStack: ["Flutter", "Dart", "Rest API", "Quran API"],
     thumbnailUrl: "/portfolio/myRamadhan/1.jpg",
-    mediaGallery: Array.from({ length: 5 }, (_, i) => `/portfolio/myRamadhan/${i + 1}.jpg`)
+    mediaGallery: Array.from({ length: 18 }, (_, i) => `/portfolio/myRamadhan/${i + 1}.jpg`)
   }
 ];

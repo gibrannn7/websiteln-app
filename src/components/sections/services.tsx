@@ -39,7 +39,7 @@ export const Services: React.FC = () => {
     {
       icon: <ShieldCheck className="h-7 w-7 text-gold-light stroke-[1.25]" />,
       title: "Integrasi & Kelola Data",
-      valueProp: "Kami bantu bereskan urusan data bisnis Anda—mulai dari integrasi antar sistem hingga pengamanan data—supaya operasional bisnis Anda tetap lancar dan aman tanpa perlu takut data berantakan.",
+      valueProp: "Kami bantu bereskan urusan data bisnis Anda mulai dari integrasi antar sistem hingga pengamanan data supaya operasional bisnis Anda tetap lancar dan aman tanpa perlu takut data berantakan.",
     },
   ];
 
