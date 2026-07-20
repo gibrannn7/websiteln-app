@@ -31,7 +31,7 @@ export const Pricing: React.FC = () => {
       name: "Proker KKM (Basic)",
       focus: "Cocok untuk: Profil Desa Singkat",
       price: "Rp 450.000",
-      originalPrice: "Rp 750.000",
+      originalPrice: "Rp 800.000",
       period: "Terima Beres",
       features: [
         "Sistem siap dalam 1 Hari Kerja",
@@ -68,7 +68,7 @@ export const Pricing: React.FC = () => {
       name: "Proker KKM (Sistem Pro)",
       focus: "Cocok untuk: Digitalisasi Desa",
       price: "Rp 700.000",
-      originalPrice: "Rp 1.200.000",
+      originalPrice: "Rp 1.500.000",
       period: "Terima Beres",
       isPopular: true,
       features: [
@@ -108,7 +108,7 @@ export const Pricing: React.FC = () => {
       name: "Sistem Aplikasi Skripsi",
       focus: "Cocok untuk: Tugas Akhir Mahasiswa",
       price: "Rp 2.000.000",
-      originalPrice: "Rp 4.000.000",
+      originalPrice: "Rp 6.000.000",
       period: "Satu Siklus Revisi",
       features: [
         <span key="role" className="inline-flex items-center gap-1.5">
@@ -146,17 +146,17 @@ export const Pricing: React.FC = () => {
       name: "Python Automation & AI",
       focus: "Cocok untuk: Efisiensi Bisnis",
       price: "Rp 1.500.000",
-      originalPrice: "Rp 3.500.000",
+      originalPrice: "Rp 3.999.000",
       period: "Per Skrip Otomasi",
       features: [
         "Ekstraksi Data Otomatis (Web Scraping)",
         "Otomatisasi Input Basis Data",
         <span key="ai" className="inline-flex items-center gap-1.5">
-          Integrasi Asisten AI (OpenAI/RAG) 
+          Integrasi Asisten AI (RAG) 
           <div className="relative group flex items-center cursor-help">
             <Info className="h-3.5 w-3.5 text-zinc-500 group-hover:text-gold-light transition-colors shrink-0" />
             <div className="absolute bottom-full right-0 mb-2.5 w-max max-w-[220px] p-2.5 bg-zinc-900 border border-zinc-700 text-zinc-200 text-[10px] leading-relaxed rounded-sm shadow-xl opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity duration-200 z-[99] text-left">
-              Penggunaan model NLP untuk analisis data atau asisten virtual.
+              Penggunaan model AI untuk analisis data atau asisten virtual.
               <div className="absolute -bottom-1 right-[2px] w-2.5 h-2.5 bg-zinc-900 border-b border-r border-zinc-700 rotate-45"></div>
             </div>
           </div>
