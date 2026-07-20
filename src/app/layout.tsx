@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   keywords: ["Jasa website KKM", "bikin web desa Serang", "website mahasiswa murah", "otomatisasi bisnis", "WEBSITELN", "jasa web Banten", "Automation"],
   authors: [{ name: "WEBSITELN" }],
   verification: {
-    google: "7egXVhQuB4VSHyRsC4TREMEWvIHBOnUALfIHRZXD7js",
+    google: "EmiVqhVHMB8F1m-BUDTLujqIANQBkuRHVld07FboFcg",
   },
   icons: {
     icon: "/logo.png",
