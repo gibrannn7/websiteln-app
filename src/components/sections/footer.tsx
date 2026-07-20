@@ -10,6 +10,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { legalData } from "@/data/legal-data";
 
 export const Footer: React.FC = () => {
   const [legalTab, setLegalTab] = useState<"privacy" | "terms" | null>(null);
@@ -28,20 +29,24 @@ export const Footer: React.FC = () => {
     }
   };
 
-  const legalContent = {
-    privacy: {
-      title: "Kebijakan Privasi (Privacy Policy)",
-      desc: "websiteln berkomitmen penuh untuk melindungi privasi data operasional klien kami. Seluruh informasi yang dikirimkan melalui formulir kontak atau data hasil eksekusi otomasi web scraping disimpan dalam enkripsi server yang ketat dan tidak akan pernah didistribusikan kepada pihak ketiga tanpa persetujuan tertulis secara legal.",
-    },
-    terms: {
-      title: "Ketentuan Layanan (Terms of Service)",
-      desc: "Layanan pengembangan perangkat lunak yang disediakan oleh websiteln beroperasi berdasarkan ruang lingkup kerja yang disepakati bersama dalam dokumen kontrak tertulis. Paket langganan pemeliharaan Elite Care dapat dibatalkan kapan saja dengan pemberitahuan minimal 14 hari sebelum siklus penagihan bulan berikutnya berjalan.",
-    },
-  };
-
   return (
-    <footer className="bg-zinc-950 pt-16 pb-10 px-6 relative z-10">
-      <div className="max-w-7xl mx-auto">
+    <footer className="bg-zinc-950 pt-16 pb-10 px-6 relative z-10 overflow-hidden">
+      
+      {/* Efek Dot Statis Memudar ke Bawah (Premium UX) */}
+      <div 
+        className="absolute inset-0 z-[1] pointer-events-none opacity-80" 
+        style={{
+          backgroundImage: "radial-gradient(rgba(0, 0, 0, 0.9) 2px, transparent 2px)",
+          backgroundSize: "24px 24px",
+          /* Logika Masking: Solid di atas, memudar di tengah, hilang sempurna di bawah */
+          WebkitMaskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%)",
+          maskImage: "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0) 100%)"
+        }}
+      />
+      {/* Gradient atas buat transisi mulus dengan section sebelumnya */}
+      <div className="absolute inset-0 z-[2] pointer-events-none bg-gradient-to-b from-zinc-950 via-transparent to-transparent h-20" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pb-16 border-b border-zinc-900/60">
           {/* Column 1 - Brand Info with Next.js Image */}
@@ -191,14 +196,21 @@ export const Footer: React.FC = () => {
       {/* Dialog for Legal Information */}
       <Dialog open={legalTab !== null} onOpenChange={(open) => !open && setLegalTab(null)}>
         {legalTab && (
-          <DialogContent className="max-w-[90vw] sm:max-w-[500px] bg-zinc-950 border border-zinc-850 p-6 rounded-sm">
-            <DialogHeader>
-              <DialogTitle className="text-xl font-light text-zinc-100 tracking-tight">
-                {legalContent[legalTab].title}
+          <DialogContent className="max-w-[90vw] sm:max-w-[650px] bg-zinc-950 border border-zinc-850 p-6 md:p-8 rounded-sm overflow-y-auto max-h-[85vh]">
+            <DialogHeader className="mb-2">
+              <DialogTitle className="text-xl md:text-2xl font-light text-zinc-100 tracking-tight">
+                {legalData[legalTab].title}
               </DialogTitle>
             </DialogHeader>
-            <DialogDescription className="text-zinc-400 text-sm leading-relaxed font-light mt-4">
-              {legalContent[legalTab].desc}
+            <DialogDescription asChild>
+              <div className="text-zinc-400 text-sm leading-relaxed font-light">
+                {/* Memecah string (\n\n) dari JSON menjadi elemen paragraf <p> agar rapi */}
+                {legalData[legalTab].desc.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="mb-4">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </DialogDescription>
           </DialogContent>
         )}

@@ -30,16 +30,6 @@ export const portfolioData: PortfolioItem[] = [
     mediaGallery: Array.from({ length: 42 }, (_, i) => `/portfolio/Procurement-Mobile/${i + 1}.jpg`)
   },
   {
-    id: "proj-003",
-    title: "Interactive Valentine Web Engine",
-    shortDescription: "Aplikasi web interaktif bertema khusus dengan micro-interactions dinamis.",
-    detailedDescription: "Proyek web kreatif kustom penuh interaksi dinamis untuk menciptakan pengalaman digital personal yang unik. Berfokus pada kehalusan animasi, transisi visual, serta musik latar yang responsif saat diakses.",
-    techStack: ["HTML5", "CSS3", "JavaScript", "Framer Motion"],
-    thumbnailUrl: "/portfolio/Valentine/1.png",
-    mediaGallery: Array.from({ length: 6 }, (_, i) => `/portfolio/Valentine/${i + 1}.png`),
-    externalVideoUrl: "https://www.youtube.com/embed/crZyXrsVwm8"
-  },
-  {
     id: "proj-004",
     title: "E-Perpus (Digital Library)",
     shortDescription: "Sistem manajemen perpustakaan digital untuk kemudahan akses dan sirkulasi buku.",
