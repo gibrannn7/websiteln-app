@@ -15,7 +15,7 @@ export const portfolioData: PortfolioItem[] = [
     title: "VNG Coffeebar Digital Platform",
     shortDescription: "Sistem informasi web dan katalog interaktif kustom untuk manajemen kafe.",
     detailedDescription: "Pengembangan platform web modern untuk VNG Coffeebar guna mendigitalisasi operasional kafe. Menampilkan menu interaktif, integrasi kontak pesanan langsung, serta branding estetika visual yang kuat.",
-    techStack: ["PHP", "CodeIgniter 3", "Bootstrap", "MySQL"],
+    techStack: ["React", "Tailwind", "Reactbits"],
     thumbnailUrl: "/portfolio/Vng-Coffeebar/1.jpg",
     mediaGallery: Array.from({ length: 12 }, (_, i) => `/portfolio/Vng-Coffeebar/${i + 1}.jpg`),
     externalVideoUrl: "https://www.youtube.com/embed/gtZ1ELD-qPs"
@@ -25,7 +25,7 @@ export const portfolioData: PortfolioItem[] = [
     title: "Procurement Mobile System",
     shortDescription: "Aplikasi mobile pelacakan pengadaan barang dan approval operasional.",
     detailedDescription: "Aplikasi seluler berkinerja tinggi untuk mengelola alur pengadaan barang (procurement) perusahaan. Mempercepat proses pengajuan dari lapangan hingga sistem persetujuan (approval) manajemen secara mobile.",
-    techStack: ["React Native", "TypeScript", "FastAPI", "PostgreSQL"],
+    techStack: ["Flutter", "Dart", "Laravel", "MySQL"],
     thumbnailUrl: "/portfolio/Procurement-Mobile/1.jpg",
     mediaGallery: Array.from({ length: 42 }, (_, i) => `/portfolio/Procurement-Mobile/${i + 1}.jpg`)
   },
@@ -53,7 +53,7 @@ export const portfolioData: PortfolioItem[] = [
     title: "PLN Pay Mobile Application",
     shortDescription: "Aplikasi seluler terintegrasi untuk kemudahan pembayaran dan token listrik.",
     detailedDescription: "Aplikasi mobile kustom yang dirancang untuk mempercepat transaksi digital, mulai dari pembelian token listrik, pembayaran tagihan bulanan, hingga histori penggunaan daya secara real-time.",
-    techStack: ["React Native", "TypeScript", "Node.js", "Express"],
+    techStack: ["Flutter", "Dart", "Laravel", "MySQL"],
     thumbnailUrl: "/portfolio/Pln-Pay/1.jpg",
     mediaGallery: Array.from({ length: 10 }, (_, i) => `/portfolio/Pln-Pay/${i + 1}.jpg`)
   },
@@ -62,7 +62,7 @@ export const portfolioData: PortfolioItem[] = [
     title: "SIBINA AI Chatbot Assistant",
     shortDescription: "Asisten virtual cerdas berbasis AI untuk otomatisasi layanan informasi.",
     detailedDescription: "Chatbot pintar yang dikonfigurasi menggunakan kecerdasan buatan untuk menjawab pertanyaan pelanggan secara otomatis 24/7, mengolah maksud pesan (intent), dan mempercepat respon layanan informasi.",
-    techStack: ["Python", "OpenAI API", "Node.js", "Next.js"],
+    techStack: ["Python", "Flask", "HTML5", "CSS3", "JavaScript"],
     thumbnailUrl: "/portfolio/SIbina-Ai/1.jpg",
     mediaGallery: Array.from({ length: 4 }, (_, i) => `/portfolio/SIbina-Ai/${i + 1}.jpg`)
   },
@@ -92,7 +92,7 @@ export const portfolioData: PortfolioItem[] = [
     title: "E-Commerce Niceso Online Store",
     shortDescription: "Platform e-commerce interaktif dengan fitur keranjang belanja dan checkout dinamis.",
     detailedDescription: "Pengembangan toko online modern yang dirancang dengan antarmuka yang sangat user-friendly. Memiliki fitur manajemen produk, keranjang belanja real-time, hingga proses checkout yang mulus untuk kenyamanan transaksi pelanggan.",
-    techStack: ["Next.js", "Tailwind CSS", "Node.js", "MySQL"],
+    techStack: ["Laravel", "PHP", "MySQL", "Blade", "Midtrans"],
     thumbnailUrl: "/portfolio/Ecommerce Niceso Demo/1.jpg",
     mediaGallery: Array.from({ length: 6 }, (_, i) => `/portfolio/Ecommerce Niceso Demo/${i + 1}.jpg`)
   },
@@ -101,7 +101,7 @@ export const portfolioData: PortfolioItem[] = [
     title: "Sistem Informasi Manajemen Magang",
     shortDescription: "Portal monitoring dan pelaporan aktivitas magang mahasiswa terintegrasi.",
     detailedDescription: "Sistem aplikasi kustom untuk mengelola administrasi magang, mulai dari pengajuan tempat, monitoring logbook harian, absensi berbasis lokasi, hingga penilaian akhir dari pembimbing lapangan.",
-    techStack: ["PHP", "Laravel", "PostgreSQL", "Tailwind CSS"],
+    techStack: ["PHP", "Codeigniter 3", "MySQL", "Bootstrap", "Whatsapp", ""],
     thumbnailUrl: "/portfolio/Aplikasi Magang/1.jpg",
     mediaGallery: Array.from({ length: 18 }, (_, i) => `/portfolio/Aplikasi Magang/${i + 1}.jpg`)
   },
@@ -110,7 +110,7 @@ export const portfolioData: PortfolioItem[] = [
     title: "Wifiskripsi - Platform Otomasi Data",
     shortDescription: "Sistem monitoring jaringan Wifi pintar dan ekstraksi pipeline data riset akademik.",
     detailedDescription: "Pengembangan web aplikasi kustom terintegrasi untuk mengotomatisasi pemantauan stabilitas jaringan nirkabel, pencatatan log autentikasi pengguna secara real-time, serta visualisasi analitik pipeline data guna mendukung efisiensi riset teknologi informasi.",
-    techStack: ["Next.js", "Python", "Tailwind CSS", "TypeScript", "PostgreSQL"],
+    techStack: ["FastAPI", "Python", "Flutter", "Dart", "MySQL", "Midtrans", "Rest API"],
     thumbnailUrl: "/portfolio/wifiskripsi/1.jpg",
     mediaGallery: Array.from({ length: 5 }, (_, i) => `/portfolio/wifiskripsi/${i + 1}.jpg`)
   },
@@ -119,7 +119,7 @@ export const portfolioData: PortfolioItem[] = [
     title: "myRamadhan",
     shortDescription: "Aplikasi seluler pendamping ibadah terintegrasi dengan fitur jurnal refleksi analitik.",
     detailedDescription: "Platform pendamping ibadah Ramadhan kustom yang komprehensif. Menghadirkan otomatisasi waktu adzan koordinat dinamis, penjejak (tracker) konsistensi salat wajib, Al-Qur'an digital, kalkulator sedekah, counter tasbih interaktif, hingga jurnal refleksi harian guna mengoptimalkan manajemen spiritual pengguna.",
-    techStack: ["React Native", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS"],
+    techStack: ["Flutter", "Dart", "Rest API", "Quran API"],
     thumbnailUrl: "/portfolio/myRamadhan/1.jpg",
     mediaGallery: Array.from({ length: 5 }, (_, i) => `/portfolio/myRamadhan/${i + 1}.jpg`)
   }
