@@ -104,5 +104,23 @@ export const portfolioData: PortfolioItem[] = [
     techStack: ["PHP", "Laravel", "PostgreSQL", "Tailwind CSS"],
     thumbnailUrl: "/portfolio/Aplikasi Magang/1.jpg",
     mediaGallery: Array.from({ length: 18 }, (_, i) => `/portfolio/Aplikasi Magang/${i + 1}.jpg`)
+  },
+  {
+    id: "proj-011",
+    title: "Wifiskripsi - Platform Otomasi Data",
+    shortDescription: "Sistem monitoring jaringan Wifi pintar dan ekstraksi pipeline data riset akademik.",
+    detailedDescription: "Pengembangan web aplikasi kustom terintegrasi untuk mengotomatisasi pemantauan stabilitas jaringan nirkabel, pencatatan log autentikasi pengguna secara real-time, serta visualisasi analitik pipeline data guna mendukung efisiensi riset teknologi informasi.",
+    techStack: ["Next.js", "Python", "Tailwind CSS", "TypeScript", "PostgreSQL"],
+    thumbnailUrl: "/portfolio/wifiskripsi/1.jpg",
+    mediaGallery: Array.from({ length: 5 }, (_, i) => `/portfolio/wifiskripsi/${i + 1}.jpg`)
+  },
+  {
+    id: "proj-012",
+    title: "myRamadhan",
+    shortDescription: "Aplikasi seluler pendamping ibadah terintegrasi dengan fitur jurnal refleksi analitik.",
+    detailedDescription: "Platform pendamping ibadah Ramadhan kustom yang komprehensif. Menghadirkan otomatisasi waktu adzan koordinat dinamis, penjejak (tracker) konsistensi salat wajib, Al-Qur'an digital, kalkulator sedekah, counter tasbih interaktif, hingga jurnal refleksi harian guna mengoptimalkan manajemen spiritual pengguna.",
+    techStack: ["React Native", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS"],
+    thumbnailUrl: "/portfolio/myRamadhan/1.jpg",
+    mediaGallery: Array.from({ length: 5 }, (_, i) => `/portfolio/myRamadhan/${i + 1}.jpg`)
   }
 ];
