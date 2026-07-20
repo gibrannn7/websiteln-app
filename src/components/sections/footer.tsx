@@ -59,7 +59,7 @@ export const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Column 2 - Navigation Links */}
+          {/* Column 2 - Navigation Links & Legal */}
           <div className="flex flex-col space-y-4 md:pl-12">
             <span className="text-xs text-zinc-350 font-semibold uppercase tracking-widest">
               Navigasi Cepat
@@ -100,6 +100,29 @@ export const Footer: React.FC = () => {
                 >
                   Tanya Jawab
                 </a>
+              </li>
+            </ul>
+
+            {/* Tambahan Legalitas di bawah Navigasi Cepat */}
+            <span className="text-xs text-zinc-350 font-semibold uppercase tracking-widest mt-6">
+              Legalitas
+            </span>
+            <ul className="space-y-2.5">
+              <li>
+                <button
+                  onClick={() => setLegalTab("privacy")}
+                  className="text-xs md:text-sm text-zinc-400 hover:text-gold-light transition-colors font-light cursor-pointer text-left"
+                >
+                  Kebijakan Privasi
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setLegalTab("terms")}
+                  className="text-xs md:text-sm text-zinc-400 hover:text-gold-light transition-colors font-light cursor-pointer text-left"
+                >
+                  Ketentuan Layanan
+                </button>
               </li>
             </ul>
           </div>
@@ -157,23 +180,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Legal copy & Copyright */}
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="text-[11px] text-zinc-500 font-light">
+        {/* Tambahkan md:pr-20 untuk memberi ruang aman bagi WA Bubble di sisi kanan */}
+        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 md:pr-20">
+          <div className="text-[11px] text-zinc-500 font-light text-center md:text-left">
             Copyright &copy; 2026 websiteln. Seluruh Hak Cipta Dilindungi Undang-Undang.
-          </div>
-          <div className="flex gap-6">
-            <button
-              onClick={() => setLegalTab("privacy")}
-              className="text-[11px] text-zinc-500 hover:text-gold-light transition-colors font-light cursor-pointer"
-            >
-              Kebijakan Privasi
-            </button>
-            <button
-              onClick={() => setLegalTab("terms")}
-              className="text-[11px] text-zinc-500 hover:text-gold-light transition-colors font-light cursor-pointer"
-            >
-              Ketentuan Layanan
-            </button>
           </div>
         </div>
       </div>

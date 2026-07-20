@@ -68,7 +68,6 @@ export const Navbar: React.FC = () => {
     { label: "Portofolio", href: "#portfolio" },
     { label: "Paket Harga", href: "#pricing" },
     { label: "FAQ", href: "#faq" },
-    { label: "Kontak", href: "#contact" }
   ];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {

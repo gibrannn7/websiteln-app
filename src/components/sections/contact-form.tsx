@@ -198,10 +198,10 @@ export const ContactForm: React.FC = () => {
                     Paket Proker KKM (Sistem Pro - Rp 700k)
                   </SelectItem>
                   <SelectItem value="Rekayasa Sistem Skripsi / TA">
-                    Rekayasa Sistem Skripsi / TA (Mulai Rp 1.5jt)
+                    Rekayasa Sistem Skripsi / TA (Mulai Rp 2jt)
                   </SelectItem>
                   <SelectItem value="Python Automation & AI">
-                    Python Automation & AI (Mulai Rp 1.25jt)
+                    Python Automation & AI (Mulai Rp 1.5jt)
                   </SelectItem>
                 </SelectContent>
               </Select>

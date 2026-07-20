@@ -13,33 +13,33 @@ export const Services: React.FC = () => {
   const services: ServiceItem[] = [
     {
       icon: <Laptop className="h-7 w-7 text-gold-light stroke-[1.25]" />,
-      title: "Sistem Web & Aplikasi Kustom",
-      valueProp: "Kami membangun website dan aplikasi yang benar-benar pas dengan alur bisnis Anda. Bukan pakai template pasaran, tapi sistem yang dibangun khusus untuk memudahkan operasional Anda sehari-hari.",
+      title: "Infrastruktur Web KKM & Profil Desa",
+      valueProp: "Desain sistem informasi desa dan pangkalan data UMKM interaktif. Dibangun khusus untuk memenuhi standar validasi luaran program kerja akademik dengan jaminan serah terima di bawah 24 jam.",
     },
     {
       icon: <Database className="h-7 w-7 text-gold-light stroke-[1.25]" />,
-      title: "Otomatisasi Alur Kerja (Workflow)",
-      valueProp: "Capek dengan input data manual atau kirim pesan satu per satu? Kami buatkan sistem yang berjalan otomatis, mulai dari sinkronisasi database sampai notifikasi pesan secara instan agar tim Anda lebih produktif.",
-    },
-    {
-      icon: <Cpu className="h-7 w-7 text-gold-light stroke-[1.25]" />,
-      title: "Solusi Cerdas Berbasis AI",
-      valueProp: "Jangan biarkan teknologi jadi penghambat. Kami integrasikan AI yang siap membantu menjawab pertanyaan pelanggan atau mengolah data bisnis Anda secara cerdas, akurat, dan otomatis.",
+      title: "Rekayasa Sistem Tugas Akhir",
+      valueProp: "Konstruksi perangkat lunak kustom (CRUD kompleks, Multi-Role, API) yang stabil. Kami menyediakan dokumentasi kode yang bersih agar Anda menguasai alur sistem saat sidang pengujian berlangsung.",
     },
     {
       icon: <RotateCcw className="h-7 w-7 text-gold-light stroke-[1.25]" />,
-      title: "Redesign Website & Landing Page",
-      valueProp: "Bikin tampilan website Anda lebih profesional dan enak dilihat. Kami bantu ubah tampilan lama Anda menjadi lebih modern dan fokus agar pengunjung lebih tertarik untuk jadi pelanggan.",
+      title: "Otomasi Skrip & Pemrosesan Data",
+      valueProp: "Eliminasi input manual berulang melalui arsitektur skrip Python. Kami mengotomatiskan ekstraksi data web (scraping), sinkronisasi basis data, hingga pelaporan matriks secara instan.",
+    },
+    {
+      icon: <Cpu className="h-7 w-7 text-gold-light stroke-[1.25]" />,
+      title: "Integrasi Logika Kecerdasan Buatan",
+      valueProp: "Implementasi model AI terapan dan sistem RAG (Retrieval-Augmented Generation) pada ekosistem web Anda untuk otomatisasi respons analitik dan dukungan operasional tanpa henti.",
     },
     {
       icon: <Smartphone className="h-7 w-7 text-gold-light stroke-[1.25]" />,
-      title: "Pengembangan Aplikasi Mobile",
-      valueProp: "Butuh aplikasi Android atau iOS yang ringan dan gampang dipakai? Kami buatkan aplikasi yang terhubung langsung ke sistem pusat, supaya Anda bisa memantau bisnis kapan saja dari ponsel.",
+      title: "Modernisasi Antarmuka Pengguna",
+      valueProp: "Restrukturisasi visual web lama (legacy) menjadi antarmuka korporat modern. Fokus pada optimalisasi Core Web Vitals, navigasi intuitif, dan peningkatan rasio konversi pengunjung.",
     },
     {
       icon: <ShieldCheck className="h-7 w-7 text-gold-light stroke-[1.25]" />,
-      title: "Integrasi & Kelola Data",
-      valueProp: "Kami bantu bereskan urusan data bisnis Anda mulai dari integrasi antar sistem hingga pengamanan data supaya operasional bisnis Anda tetap lancar dan aman tanpa perlu takut data berantakan.",
+      title: "Manajemen Server & Basis Data",
+      valueProp: "Layanan penempatan aplikasi (deployment) tanpa hambatan dengan manajemen relasi basis data yang aman. Menjamin waktu aktif (uptime) server 99.9% tanpa membebani Anda dengan konfigurasi teknis.",
     },
   ];
 
