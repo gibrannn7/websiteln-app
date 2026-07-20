@@ -119,9 +119,9 @@ export const Navbar: React.FC = () => {
             <Image
               src="/logo.png"
               alt="websiteln logo"
-              width={180}
-              height={48}
-              className="h-12 w-auto object-contain cursor-pointer"
+              width={240}
+              height={64}
+              className="h-14 md:h-16 w-auto object-contain cursor-pointer"
               priority
             />
           </Link>
@@ -186,9 +186,9 @@ export const Navbar: React.FC = () => {
                   <Image
                     src="/logo.png"
                     alt="websiteln logo"
-                    width={130}
-                    height={35}
-                    className="h-8 w-auto object-contain"
+                    width={180}
+                    height={48}
+                    className="h-10 md:h-12 w-auto object-contain"
                   />
                   <button
                     onClick={() => setIsOpen(false)}

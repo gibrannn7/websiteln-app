@@ -54,9 +54,9 @@ export const Footer: React.FC = () => {
             <Image
               src="/logo.png"
               alt="websiteln logo"
-              width={180}
-              height={48}
-              className="h-12 w-auto object-contain"
+              width={260}
+              height={72}
+              className="h-16 md:h-20 w-auto object-contain"
               loading="lazy"
             />
             <p className="text-xs md:text-sm text-zinc-400 font-light leading-relaxed max-w-sm">
